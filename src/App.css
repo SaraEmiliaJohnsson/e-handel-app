@@ -1,1 +1,4 @@
-
+main {
+    width: var(--container);
+    margin-inline: auto;
+}
