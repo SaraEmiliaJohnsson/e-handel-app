@@ -1,6 +1,14 @@
+import React from "react";
+import ItemList from "../../components/ItemList";
 
-
-
-export default function AquariumPage() {
-    return <div>Aquashop</div>;
-}
+const FishPage: React.FC = () => {
+	return (
+	  <div>
+		<h1>aqua</h1>
+		<ItemList collectionPath="category/fish/items" title="Fishes" />
+	  </div>
+	);
+  };
+  
+  export default FishPage;
+  

@@ -1,4 +1,4 @@
-export interface Fish {
+export interface Item {
 	id: string;
 	name: string;
 	type: string;
