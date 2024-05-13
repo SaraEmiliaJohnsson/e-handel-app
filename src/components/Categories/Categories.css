@@ -13,35 +13,21 @@
     padding-block-end: 2rem;
 }
 .categories__item {
-    border: 1px solid var(--text);
+    border: 2px solid var(--text);
     padding-block: 1rem;
     display: grid;
     place-content: center;
     gap: 0.5rem;
     text-align: center;
     border-radius: 0.5rem;
-    transition: border-color 0.1s ease-in, scale 0.1s ease-in;
+    transition: border-color 0.1s ease-in;
     position: relative;
     overflow: hidden;
     font-weight: 500;
 }
 
 .categories__item:hover {
-    scale: 1.05;
-    border-color: transparent;
-}
-.categories__item::after {
-    content: '';
-    position: absolute;
-    inset: -2rem;
-    background-color: var(--secondary);
-    z-index: -1;
-    transition: transform 0.3s ease-in, scale 0.3s ease-in-out;
-    transform: translateX(-100%);
-    rotate: 45deg;
-}
-.categories__item:hover::after {
-    transform: translateX(0);
+    border-color: var(--secondary);
 }
 .categories__link {
     font-size: 1.2rem;

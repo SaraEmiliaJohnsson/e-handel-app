@@ -10,9 +10,8 @@ export default function Categories() {
     useEffect(() => {
         const fetchCategories = async () => {
             const querySnapshot = await getDocs(collection(db, 'category'));
-            const categoryData = querySnapshot.docs.map((doc) => doc.data() as Category);
+            const categoryData = querySnapshot.docs.map((doc) => ({ slug: doc.id, ...doc.data() } as Category));
             setCategories(categoryData);
-            console.log(categoryData);
         };
         fetchCategories();
     }, []);
@@ -22,8 +21,7 @@ export default function Categories() {
             <ul className="categories__list" role="list">
                 {categories.map((category) => (
                     <li className="categories__item" key={category.name}>
-                        {/* <img src={`/landing-icons/${category.icon}`} alt="" /> */}
-                        <Link className="categories__link" to={`kategori/${category.slug}`}>
+                        <Link className="categories__link" to={`kategorier/${category.slug}`}>
                             {category.name}
                         </Link>
                     </li>
