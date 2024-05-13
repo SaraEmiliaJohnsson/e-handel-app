@@ -47,10 +47,10 @@ export const LoginPage = () => {
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <br />
-                    <div>
-                        <button className="login-btn" onClick={signInUser}>Login</button>
-                        <button className="signup-btn" onClick={createUser}>Signup</button>
-                    </div>
+
+                    <button className="login-btn" onClick={signInUser}>Logga in</button>
+                    <button className="signup-btn" onClick={createUser}>Registrera</button>
+
                 </section>
             </main>
         </>
