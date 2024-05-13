@@ -1,0 +1,39 @@
+.categories__list {
+    --min: 20ch;
+    --gap: 1rem;
+
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+    place-content: center;
+}
+.categories__title {
+    font-size: clamp(3rem, 5vw, 5rem);
+    text-align: center;
+    padding-block-end: 2rem;
+}
+.categories__item {
+    border: 2px solid var(--text);
+    padding-block: 1rem;
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: border-color 0.1s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.categories__item:hover {
+    border-color: var(--secondary);
+}
+.categories__link {
+    font-size: 1.2rem;
+}
+.categories__link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
