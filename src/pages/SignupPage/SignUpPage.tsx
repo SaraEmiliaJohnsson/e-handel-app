@@ -1,20 +1,19 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { auth } from "../../config/firebase";
-import './LoginPage.css'
-import { Link } from "react-router-dom";
+import './SignUpPage.css'
 
 
 
-export const LoginPage = () => {
+export const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
-    const signInUser = async () => {
-        signInWithEmailAndPassword(auth, email, password)
+    const createUser = async () => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log('Inloggad', userCredential);
+
             })
             .catch((error) => {
                 console.log(error.message);
@@ -24,9 +23,9 @@ export const LoginPage = () => {
 
     return (
         <>
-            <main className="main-login_container">
-                <section className="login-container">
-                    <h1 className="login-heading">Logga In</h1>
+            <main className="main-signup_container">
+                <section className="signup-container">
+                    <h1 className="signup-heading">Registrera konto</h1>
                     <div>
                         <label>E-post:</label>
                         <input type="text" name="email" id="email" placeholder="E-post.." value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -38,8 +37,8 @@ export const LoginPage = () => {
                     </div>
                     <br />
 
-                    <button className="login-btn" onClick={signInUser}>Logga in</button>
-                    <Link to='/signup'>Registrera nytt konto</Link>
+
+                    <button className="signup-btn" onClick={createUser}>Registrera</button>
 
                 </section>
             </main>
