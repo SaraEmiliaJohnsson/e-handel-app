@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../config/firebase';
-import { Item } from '../types';
+import { db } from '../../config/firebase';
+import { Item } from '../../types';
+import './ItemsList.css'
+
 
 interface ItemListProps {
 	collectionPath: string; // Path to the collection in Firestore
-	title: string; // Title of the item list
   }
   
-  const ItemList: React.FC<ItemListProps> = ({ collectionPath, title }) => {
+  const ItemList: React.FC<ItemListProps> = ({ collectionPath }) => {
 	const [itemList, setItemList] = useState<Item[]>([]);
   
 	useEffect(() => {
@@ -29,12 +30,17 @@ interface ItemListProps {
   
 	return (
 	  <div className='item-list'>
-		<h2>{title}</h2>
 		<ul className='items'>
 		  {itemList.map((item) => (
-			<li key={item.id}>
-			  {item.name} - {item.type}
-			</li>
+			<li key={item.id} className="item">
+			<div className="item-info">
+			  <h3 className="item-name">{item.name}</h3>
+			  <p className="item-description">{item.description}</p>
+			  <p className="item-price">Pris: {item.price}kr</p>
+			</div>
+			<img src={item.imgURL} alt={item.name}  className="item-image" />
+		  </li>
+		  
 		  ))}
 		</ul>
 	  </div>
