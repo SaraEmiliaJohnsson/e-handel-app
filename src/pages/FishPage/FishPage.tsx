@@ -24,9 +24,9 @@ const FishPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className='fish-page'>
       <h2>Fishes</h2>
-      <ul>
+      <ul className='fish-list'>
         {fishList.map((fish) => (
           <li key={fish.id}>
             {fish.name} - {fish.type}
