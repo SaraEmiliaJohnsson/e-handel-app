@@ -1,19 +1,5 @@
-:root[data-theme='light'] {
-    --text: rgb(3, 11, 17);
-    --background: rgb(242, 249, 253);
-    --primary: rgb(51, 164, 225);
-    --secondary: rgb(135, 144, 237);
-    --accent: rgb(93, 78, 228);
-}
-:root {
-    --font-family: 'Roboto', sans-serif;
 
-    --container-max-width: 120ch;
-    --container-padding-inline: 2rem;
-    --container: min(calc(100% - var(--container-padding-inline)), var(--container-max-width));
-}
-
-.main-login_container {
+.main-signup_container {
     height: 100vh;
     width: var(--container);
     display: flex;
@@ -22,7 +8,7 @@
     align-items: center;
 }
 
-.login-container {
+.signup-container {
     width: 25em;
     height: 25em;
     border: 2px solid var(--primary);
@@ -33,7 +19,7 @@
     align-items: center;
 }
 
-.login-heading {
+.signup-heading {
     padding: 1em;
 }
 
@@ -44,11 +30,10 @@
 }
 
 
-.login-btn {
+.signup-btn {
     background-color: var(--primary);
     color: white;
     padding: 0.4em;
     margin: 0.5em;
     border-radius: 0.5em;
 }
-
