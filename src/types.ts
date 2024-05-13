@@ -1,3 +1,4 @@
+
 export interface Item {
 	id: string;
 	name: string;
@@ -7,3 +8,10 @@ export interface Item {
 	imgId: string;
 	title: string;
 }
+
+export interface Category {
+    name: string;
+    slug: string;
+}
+
+
