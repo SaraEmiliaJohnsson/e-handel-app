@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import { LoginPage } from './pages/LoginPage/LoginPage';
+
 
 function App() {
     return (
