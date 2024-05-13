@@ -36,7 +36,7 @@ export const LoginPage = () => {
         <>
             <main className="main-login_container">
                 <section className="login-container">
-                    <h1>Logga In</h1>
+                    <h1 className="login-heading">Logga In</h1>
                     <div>
                         <label>E-post:</label>
                         <input type="text" name="email" id="email" placeholder="E-post.." value={email} onChange={(e) => setEmail(e.target.value)} />
