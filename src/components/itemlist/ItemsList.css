@@ -1,0 +1,27 @@
+/* styles.css */
+
+.item-list {
+    margin-bottom: 20px;
+}
+
+.item-list h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.item-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item-list li {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.item-list li:hover {
+    background-color: #e0e0e0;
+}
