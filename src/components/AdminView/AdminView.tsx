@@ -22,7 +22,6 @@ const Adminview = () => {
                         category: categoryName,
                         ...(itemDoc.data() as Item),
                     }));
-                    console.log(itemsData);
                     return itemsData;
                 });
                 const allItems = await Promise.all(allItemsPromise);
