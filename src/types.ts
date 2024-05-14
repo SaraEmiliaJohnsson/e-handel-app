@@ -14,5 +14,6 @@ export interface Category {
 }
 
 export interface AdminItem extends Item {
+    docId: string;
     category: string;
 }

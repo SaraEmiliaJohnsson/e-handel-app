@@ -14,11 +14,14 @@ const Adminview = () => {
                 const allItemsPromise = categorySnapshot.docs.map(async (categoryDoc) => {
                     const categoryName = categoryDoc.id;
                     const itemsQuery = query(collection(categoryDoc.ref, 'items'));
+
                     const itemsSnapshot = await getDocs(itemsQuery);
                     const itemsData: AdminItem[] = itemsSnapshot.docs.map((itemDoc) => ({
+                        docId: itemDoc.id,
                         category: categoryName,
                         ...(itemDoc.data() as Item),
                     }));
+                    console.log(itemsData);
                     return itemsData;
                 });
                 const allItems = await Promise.all(allItemsPromise);
@@ -47,7 +50,7 @@ const Adminview = () => {
                 </thead>
                 <tbody>
                     {allItemsData.map((item) => (
-                        <TableRow item={item} />
+                        <TableRow key={item.docId} item={item} />
                     ))}
                 </tbody>
             </table>
