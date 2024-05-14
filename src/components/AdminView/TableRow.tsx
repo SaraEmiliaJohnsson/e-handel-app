@@ -1,4 +1,5 @@
 import { AdminItem } from '../../types';
+import './AdminView.css';
 
 interface TableRowProps {
     item: AdminItem;
@@ -6,14 +7,14 @@ interface TableRowProps {
 
 const TableRow = ({ item }: TableRowProps) => {
     return (
-        <tr>
+        <tr className="adminview-table-row">
             <td>{item.category}</td>
             <td>{item.name}</td>
-            <td>{item.price} kr</td>
+            <td>{item.price} </td>
             <td>{item.description}</td>
             <td>{item.imgURL}</td>
             <td>
-                <button>Redigera</button>
+                <button className="admin-view-btn">Redigera</button>
             </td>
         </tr>
     );

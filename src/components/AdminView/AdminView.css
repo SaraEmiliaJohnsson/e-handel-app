@@ -1,0 +1,64 @@
+main:has(.adminView-container) {
+    max-width: 100%;
+    width: unset;
+}
+
+.adminView-container {
+    padding-block: 2rem;
+}
+
+.adminview-table {
+    display: grid;
+}
+
+.adminview-table > * {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 0.5rem;
+}
+.adminview-table > * > * {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 6;
+    padding-block: 1rem;
+}
+
+.adminview-table-row {
+    padding-inline: 1rem;
+    text-align: left;
+}
+
+.adminview-table-row td {
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.adminview-table-header {
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--primary);
+}
+
+.adminview-table-body tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+}
+
+.adminview-table-body td {
+    text-transform: capitalize;
+}
+.adminview-table-body tr:hover {
+    background-color: var(--secondary);
+}
+
+.admin-view-btn {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+}
+
+.admin-view-btn:hover {
+    color: var(--primary);
+    background-color: var(--text);
+}

@@ -3,6 +3,7 @@ import { db } from '../../config/firebase';
 import { collection, getDocs, query } from 'firebase/firestore';
 import TableRow from './TableRow';
 import { AdminItem, Item } from '../../types';
+import './AdminView.css';
 
 const Adminview = () => {
     const [allItemsData, setAllItemsData] = useState<AdminItem[]>([]);
@@ -36,10 +37,10 @@ const Adminview = () => {
     }, []);
 
     return (
-        <>
-            <table>
-                <thead>
-                    <tr>
+        <section className="adminView-container">
+            <table className="adminview-table">
+                <thead className="adminview-table-header">
+                    <tr className="adminview-table-row">
                         <th>Kategori</th>
                         <th>Namn</th>
                         <th>Pris</th>
@@ -48,13 +49,13 @@ const Adminview = () => {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="adminview-table-body">
                     {allItemsData.map((item) => (
                         <TableRow key={item.docId} item={item} />
                     ))}
                 </tbody>
             </table>
-        </>
+        </section>
     );
 };
 
