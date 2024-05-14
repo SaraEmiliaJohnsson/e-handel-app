@@ -104,10 +104,12 @@ const TableRow = ({ item }: TableRowProps) => {
                                     setEditedItem((prevState) => ({ ...prevState, imgURL: e.target.value }))
                                 }
                             />
-                            <button type="button" onClick={handleClose}>
+                            <button className="admin-view-btn" type="submit">
+                                Spara
+                            </button>
+                            <button className="admin-view-btn" type="button" onClick={handleClose}>
                                 Avbryt
                             </button>
-                            <button type="submit">Spara</button>{' '}
                         </form>
                     </div>
                 </div>
