@@ -37,9 +37,10 @@ export const LoginPage = () => {
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <br />
-
-                    <button className="login-btn" onClick={signInUser}>Logga in</button>
-                    <Link to='/signup'>Registrera nytt konto</Link>
+                    <div className="btn-container">
+                        <button className="login-btn" onClick={signInUser}>Logga in</button>
+                    </div>
+                    <Link className="link" to='/signup'>Registrera nytt konto</Link>
 
                 </section>
             </main>

@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .login-container {
@@ -31,6 +32,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(var(--secondary), var(--background), var(--secondary));
+    box-shadow: 6px 6px 0 var(--primary);
 }
 
 .login-heading {
@@ -43,12 +46,28 @@
     border-radius: 0.5em;
 }
 
+.btn-container {
+    height: 3em;
+}
+
 
 .login-btn {
-    background-color: var(--primary);
-    color: white;
+    background: linear-gradient(var(--primary), var(--background), var(--primary));
+    color: black;
     padding: 0.4em;
     margin: 0.5em;
     border-radius: 0.5em;
 }
 
+.login-btn:hover {
+    padding: 0.7em;
+    box-shadow: 3px 3px 0 var(--primary);
+}
+
+.link {
+    padding: 0.7em;
+}
+
+.link:hover {
+    font-weight: 600;
+}
