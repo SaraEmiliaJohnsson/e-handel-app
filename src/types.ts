@@ -15,4 +15,9 @@ export interface Category {
 
 export interface CartItem extends Item {
     quantity: number;
+
+export interface AdminItem extends Item {
+    docId: string;
+    category: string;
+
 }
