@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { AdminItem } from '../../types';
 import './AdminView.css';
-import { updateDoc, doc } from 'firebase/firestore';
+import { updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 
 interface TableRowProps {
     item: AdminItem;
+    deleteItem: (docId: string) => void;
 }
 
-const TableRow = ({ item }: TableRowProps) => {
+const TableRow = ({ item, deleteItem }: TableRowProps) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedItem, setEditedItem] = useState<Partial<AdminItem>>({
         name: item.name,
@@ -56,6 +57,17 @@ const TableRow = ({ item }: TableRowProps) => {
         handleSave();
     };
 
+    const deleteItemHandler = async (docId: string) => {
+        try {
+            const itemRef = doc(db, `category/${item.category}/items`, docId);
+            await deleteDoc(itemRef);
+            console.log('Item deleted successfully!');
+            deleteItem(docId);
+        } catch (error) {
+            console.error('Error deleting item: ', error);
+        }
+    };
+
     return (
         <>
             <tr className="adminview-table-row">
@@ -64,9 +76,12 @@ const TableRow = ({ item }: TableRowProps) => {
                 <td>{item.price} </td>
                 <td>{item.description}</td>
                 <td>{item.imgURL}</td>
-                <td>
+                <td className="btn-column-container">
                     <button className="admin-view-btn" onClick={handleEdit}>
                         Redigera
+                    </button>
+                    <button className="admin-view-btn" onClick={() => deleteItemHandler(item.docId)}>
+                        Radera
                     </button>
                 </td>
             </tr>
