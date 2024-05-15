@@ -3,9 +3,9 @@ import './FooterComponent.css'
 
 
 export const FooterComponent = () => {
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-    const toggleContent = (index) => {
+    const toggleContent = (index: number) => {
         setActiveIndex(activeIndex === index ? null : index);
     }
 
