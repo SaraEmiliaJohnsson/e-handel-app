@@ -36,7 +36,7 @@ interface ItemListProps {
 			<div className="item-info">
 			  <h3 className="item-name">{item.name}</h3>
 			  <p className="item-description">{item.description}</p>
-			  <p className="item-price">Pris: {item.price}kr</p>
+			  <p className="item-price">Pris: {item.price}kr <button className='buy-button'>Köp</button></p>
 			</div>
 			<img src={item.imgURL} alt={item.name}  className="item-image medium-image" />
 		  </li>
