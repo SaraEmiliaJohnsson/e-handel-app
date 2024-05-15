@@ -14,11 +14,17 @@
     display: grid;
     grid-template-rows: auto 1fr auto auto;
     gap: 1rem;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
 }
 @media (width < 500px) {
     .shopping-cart {
         width: 100%;
     }
+}
+.shopping-cart.open {
+    transform: translateX(0);
 }
 .shopping-cart__title {
     font-size: 2.5rem;
