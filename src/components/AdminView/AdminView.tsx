@@ -35,6 +35,10 @@ const Adminview = () => {
         fetchData();
     }, []);
 
+    const handleItemDeleted = (docId: string) => {
+        setAllItemsData((prevItems) => prevItems.filter((item) => item.docId !== docId));
+    };
+
     return (
         <section className="adminView-container">
             <table className="adminview-table">
@@ -50,7 +54,7 @@ const Adminview = () => {
                 </thead>
                 <tbody className="adminview-table-body">
                     {allItemsData.map((item) => (
-                        <TableRow key={item.docId} item={item} />
+                        <TableRow key={item.docId} item={item} deleteItem={handleItemDeleted} />
                     ))}
                 </tbody>
             </table>
