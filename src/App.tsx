@@ -7,6 +7,7 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignUpPage } from './pages/SignupPage/SignUpPage';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import AdminViewPage from './pages/AdminviewPage/AdminViewPage';
+import { FooterComponent } from './components/Footer/FooterComponent';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/admin" element={<AdminViewPage />} />
                 </Routes>
             </main>
+            <FooterComponent />
         </Router>
     );
 }
