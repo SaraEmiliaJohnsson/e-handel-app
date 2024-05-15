@@ -1,0 +1,122 @@
+.shopping-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50ch;
+    background-color: var(--background);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    z-index: 1000;
+    height: 100dvh;
+    padding-block: 2rem;
+    padding-inline: 1.5rem;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 1rem;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+@media (width < 500px) {
+    .shopping-cart {
+        width: 100%;
+    }
+}
+.shopping-cart.open {
+    transform: translateX(0);
+}
+.shopping-cart__title {
+    font-size: 2.5rem;
+    text-align: center;
+}
+.shopping-cart__list {
+    overflow-y: auto;
+    display: block;
+    gap: 1rem;
+}
+.shopping-cart__list > * {
+    margin-bottom: 1rem;
+}
+
+.shopping-cart__button--close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    color: var(--text);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+.shopping-cart-item {
+    display: grid;
+    grid-template-columns: 2fr 3fr auto;
+    gap: 0.5rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+    overflow: hidden;
+    padding-inline-end: 1rem;
+}
+.shopping-cart-item__image {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.shopping-cart-item__details {
+    display: grid;
+    align-content: space-between;
+}
+.shopping-cart-item__name {
+    font-size: 1.2rem;
+}
+.shopping-cart-item__price {
+    font-weight: 300;
+    align-self: flex-end;
+}
+
+.shopping-cart-item__quantity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: 1px solid var(--text);
+    align-self: center;
+    border-radius: 0.25rem;
+    width: fit-content;
+    align-self: end;
+}
+.shopping-cart-item__quantity-value {
+    padding-inline: 0.5rem;
+    width: 2rem;
+    text-align: center;
+}
+.shopping-cart-item__quantity-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+    transition: opacity 0.25s ease;
+}
+.shopping-cart-item__quantity-button:hover {
+    opacity: 0.5;
+}
+.shopping-cart__button {
+    --_btn-background: var(--accent);
+    --_btn-color: var(--background);
+    padding-block: 1rem;
+    background-color: var(--_btn-background);
+    color: var(--_btn-color);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+.shopping-cart__button--checkout:hover {
+    --_btn-background: var(--secondary);
+    --_btn-color: var(--background);
+}
