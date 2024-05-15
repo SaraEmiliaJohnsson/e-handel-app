@@ -38,7 +38,7 @@ interface ItemListProps {
 			  <p className="item-description">{item.description}</p>
 			  <p className="item-price">Pris: {item.price}kr</p>
 			</div>
-			<img src={item.imgURL} alt={item.name}  className="item-image" />
+			<img src={item.imgURL} alt={item.name}  className="item-image medium-image" />
 		  </li>
 		  
 		  ))}
