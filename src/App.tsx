@@ -7,11 +7,13 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignUpPage } from './pages/SignupPage/SignUpPage';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import AdminViewPage from './pages/AdminviewPage/AdminViewPage';
+import Header from './components/Header/Header';
 
 
 function App() {
     return (
         <Router>
+			<Header />
             <ShoppingCart />
             <main>
                 <Routes>
