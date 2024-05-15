@@ -1,0 +1,26 @@
+.header-container {
+    width: 100%;
+    background: linear-gradient(var(--primary), var(--secondary));
+    color: white;
+    padding: 10px;
+    box-shadow: 7px 7px 7px black;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.home-button {
+    background: var(--accent);
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+    padding: 1px;
+}
+.home-button:hover {
+    opacity: 0.8;
+}
+.logo-container {
+    display: flex;
+}
+.logo {
+    margin: 10px;
+}
