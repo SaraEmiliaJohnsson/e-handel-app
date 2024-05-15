@@ -50,14 +50,31 @@
     text-align: center;
 }
 
-.item-list li:hover {
-    opacity: 0.8;
-}
-
 .medium-image {
     border-radius: 5%;
     border: 1px solid #000000;
     height: auto;
     max-width: 150px; /* Adjust max-width as needed */
     margin-top: 10px;
+}
+.buy-button {
+    background-color: rgb(204, 253, 204);
+    padding: 1px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+}
+.buy-button:hover {
+    background-color: rgb(14, 255, 5);
+    cursor: pointer;
+}
+.item-price {
+    margin-top: auto;
+}
+.item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
 }
