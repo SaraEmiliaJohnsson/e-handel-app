@@ -5,20 +5,19 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import ItemsListPage from './components/itemlist/ItemListPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignUpPage } from './pages/SignupPage/SignUpPage';
-
-
-
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 function App() {
     return (
         <Router>
+            <ShoppingCart />
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/produkter" element={<CategoryPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignUpPage />} />
-					          <Route path="/kategori/:slug" element={<ItemsListPage/>} />
+                    <Route path="/kategori/:slug" element={<ItemsListPage />} />
                 </Routes>
             </main>
         </Router>
