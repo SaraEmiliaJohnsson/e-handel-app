@@ -37,9 +37,9 @@ export const SignUpPage = () => {
                     </div>
                     <br />
 
-
-                    <button className="signup-btn" onClick={createUser}>Registrera</button>
-
+                    <div className="btn-container">
+                        <button className="signup-btn" onClick={createUser}>Registrera</button>
+                    </div>
                 </section>
             </main>
         </>

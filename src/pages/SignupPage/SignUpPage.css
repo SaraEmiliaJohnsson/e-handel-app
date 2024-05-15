@@ -17,6 +17,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(var(--secondary), var(--background), var(--secondary));
+    box-shadow: 6px 6px 0 var(--primary);
 }
 
 .signup-heading {
@@ -29,11 +31,19 @@
     border-radius: 0.5em;
 }
 
+.btn-container {
+    height: 3em;
+}
+
 
 .signup-btn {
-    background-color: var(--primary);
-    color: white;
+    background: linear-gradient(var(--primary), var(--background), var(--primary));
+    color: black;
     padding: 0.4em;
-    margin: 0.5em;
     border-radius: 0.5em;
+}
+
+.signup-btn:hover {
+    padding: 0.7em;
+    box-shadow: 3px 3px 0 var(--primary);
 }
