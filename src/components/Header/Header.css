@@ -8,14 +8,14 @@
     display: flex;
     justify-content: space-between;
 }
-button {
+.home-button {
     background: var(--accent);
     border: 1px solid #000000;
     border-radius: 5px;
     box-shadow: 2px 2px 2px black;
     padding: 1px;
 }
-button:hover {
+.home-button:hover {
     opacity: 0.8;
 }
 .logo-container {
