@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../config/firebase";
 import './SignUpPage.css'
+import logo from '../../assets/logo.svg';
 
 
 
@@ -25,21 +26,25 @@ export const SignUpPage = () => {
         <>
             <main className="main-signup_container">
                 <section className="signup-container">
-                    <h1 className="signup-heading">Registrera konto</h1>
-                    <div>
+                    <div className="heading-container">
+                        <h1 className="signup-heading">Registrera konto</h1>
+                        <p className="subheading">Vänligen logga in med din e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo" />
+                    </div>
+                    <div className="input-group">
                         <label>E-post:</label>
                         <input type="text" name="email" id="email" placeholder="E-post.." value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <br />
-                    <div>
+
+                        <br />
+
                         <label>Lösenord:</label>
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <div className="btn-container">
+                            <button className="signup-btn" onClick={createUser}>Registrera</button>
+                        </div>
                     </div>
                     <br />
 
-                    <div className="btn-container">
-                        <button className="signup-btn" onClick={createUser}>Registrera</button>
-                    </div>
+
                 </section>
             </main>
         </>

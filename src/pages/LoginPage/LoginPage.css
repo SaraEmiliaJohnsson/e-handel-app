@@ -14,7 +14,7 @@
 }
 
 .main-login_container {
-    height: 100vh;
+    height: 90vh;
     width: var(--container);
     display: flex;
     flex-direction: column;
@@ -23,14 +23,20 @@
     
 }
 
+@media (min-width: 1250px) {
+    .main-login_container {
+        height: 100vh;
+    }
+}
+
 .login-container {
-    width: 25em;
+    width: 45em;
     height: 25em;
     border: 2px solid var(--primary);
     border-radius: 0.5em;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     background: linear-gradient(var(--secondary), var(--background), var(--secondary));
     box-shadow: 6px 6px 0 var(--primary);
@@ -38,6 +44,11 @@
 
 .login-heading {
     padding: 1em;
+}
+
+.heading-container {
+    align-self: flex-start;
+    justify-content: flex-start;
 }
 
 #email, #password {
@@ -50,6 +61,10 @@
     height: 3em;
 }
 
+.subheading {
+    padding: 0.7em;
+}
+
 
 .login-btn {
     background: linear-gradient(var(--primary), var(--background), var(--primary));
@@ -57,10 +72,11 @@
     padding: 0.4em;
     margin: 0.5em;
     border-radius: 0.5em;
+    display: block;
 }
 
 .login-btn:hover {
-    padding: 0.7em;
+    padding: 0.5em;
     box-shadow: 3px 3px 0 var(--primary);
 }
 
