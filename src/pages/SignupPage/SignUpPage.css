@@ -21,7 +21,7 @@
     border-radius: 0.5em;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
     background: linear-gradient(var(--secondary), var(--background), var(--secondary));
     box-shadow: 6px 6px 0 var(--primary);
@@ -40,6 +40,15 @@
     justify-content: flex-start;
 }
 
+.logo-login {
+    height: 15em;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
 #email, #password {
     margin: 0.4em;
     padding: 0.4em;
@@ -47,7 +56,11 @@
 }
 
 .btn-container {
-    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 5em;
 }
 
 
@@ -56,9 +69,67 @@
     color: black;
     padding: 0.4em;
     border-radius: 0.5em;
+    margin: 0.7em;
 }
 
 .signup-btn:hover {
     padding: 0.5em;
     box-shadow: 3px 3px 0 var(--primary);
+}
+
+.link {
+    padding: 0.7em;
+}
+
+.link:hover {
+    font-weight: 600;
+}
+
+
+@media (max-width: 800px) {
+    .signup-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        padding: 1em;
+    }
+
+    .heading-container {
+        align-self: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .logo-login {
+        height: 10em;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .input-group, .btn-container {
+        width: 15em;
+        align-items: center;
+    }
+
+    #email, #password {
+        width: 15em;
+    }
+
+    .btn-container {
+        align-items: center;
+    }
+
+    .signup-btn {
+        width: 6em;
+        text-align: center;
+    }
+
+    .link {
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
 }

@@ -29,7 +29,7 @@ export const LoginPage = () => {
                 <section className="login-container">
                     <div className="heading-container">
                         <h1 className="login-heading">Logga In</h1>
-                        <p className="subheading">Vänligen logga in med din e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo" />
+                        <p className="subheading">Vänligen logga in med din e-postadress <br /> och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
                     </div>
 
                     <div className="input-group">
