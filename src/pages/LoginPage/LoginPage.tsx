@@ -1,27 +1,47 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
-import { auth } from "../../config/firebase";
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from "../../config/firebase";
 import './LoginPage.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.svg';
+
 
 
 
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
 
     const signInUser = async () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                console.log('Inloggad', userCredential);
-            })
-            .catch((error) => {
-                console.log(error.message);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-            });
-    }
+            const roleDocRef = doc(db, 'roles', user.uid);
+            const roleDoc = await getDoc(roleDocRef);
+            const roleData = roleDoc.data();
+
+            if (roleData && roleData.role) {
+                if (roleData.role === 'admin') {
+                    navigate('/admin');
+                } else {
+                    navigate('/')
+                }
+            } else {
+                console.error('User role data is not found or invalid');
+            }
+
+
+        } catch (error) {
+            console.error('Error signing in', error);
+
+        }
+
+
+    };
 
     return (
         <>

@@ -1,26 +1,31 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import './SignUpPage.css'
 import logo from '../../assets/logo.svg';
 import { Link } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 
 
 
 export const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('user');
 
     const createUser = async () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                console.log('Inloggad', userCredential);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-            })
-            .catch((error) => {
-                console.log(error.message);
+            await setDoc(doc(db, 'roles', user.uid), { role });
 
-            });
+            console.log('User registered and role assigned');
+
+        } catch (error) {
+            console.error('Error registering user', error);
+
+        };
     }
 
     return (
@@ -39,6 +44,12 @@ export const SignUpPage = () => {
 
                         <label>Lösenord:</label>
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
+
+                        <select title="role" value={role} onChange={(e) => setRole(e.target.value)}>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+
                         <div className="btn-container">
                             <button className="signup-btn" onClick={createUser}>Registrera</button>
 
