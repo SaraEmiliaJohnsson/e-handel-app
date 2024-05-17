@@ -22,27 +22,32 @@ const EditForm = ({ item, onSave, onClose }: EditFormProps) => {
     };
 
     return (
-        <div className="overlay">
-            <div className="popup">
+        <div className="edit-overlay">
+            <div className=" edit-popup">
+                <h2>Redigera</h2>
                 <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Namn:</label>
                     <input
                         type="text"
                         name="name"
                         value={editedItem.name}
                         onChange={(e) => setEditedItem({ ...editedItem, name: e.target.value })}
                     />
+                    <label htmlFor="price">Pris:</label>
                     <input
                         type="number"
                         name="price"
                         value={editedItem.price}
                         onChange={(e) => setEditedItem({ ...editedItem, price: parseInt(e.target.value) || 0 })}
                     />
+                    <label htmlFor="description">Beskrivning:</label>
                     <input
                         type="text"
                         name="description"
                         value={editedItem.description}
                         onChange={(e) => setEditedItem({ ...editedItem, description: e.target.value })}
                     />
+                    <label htmlFor="imgURL">Bild-URL:</label>
                     <input
                         type="text"
                         name="imgURL"
