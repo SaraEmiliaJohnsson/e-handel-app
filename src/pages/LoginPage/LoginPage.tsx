@@ -3,6 +3,7 @@ import { useState } from "react"
 import { auth } from "../../config/firebase";
 import './LoginPage.css'
 import { Link } from "react-router-dom";
+import logo from '../../assets/logo.svg';
 
 
 
@@ -26,21 +27,31 @@ export const LoginPage = () => {
         <>
             <main className="main-login_container">
                 <section className="login-container">
-                    <h1 className="login-heading">Logga In</h1>
-                    <div>
+                    <div className="heading-container">
+                        <h1 className="login-heading">Logga In</h1>
+                        <p className="subheading">Vänligen logga in med din e-postadress <br /> och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
+                    </div>
+
+                    <div className="input-group">
                         <label>E-post:</label>
                         <input type="text" name="email" id="email" placeholder="E-post.." value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <br />
-                    <div>
+                        <br />
                         <label>Lösenord:</label>
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
+
+                        <div className="btn-container">
+                            <button className="login-btn" onClick={signInUser}>Logga in</button>
+                        </div>
+
+
+                        <Link className="link" to='/signup'>Registrera nytt konto</Link>
+
                     </div>
-                    <br />
-                    <div className="btn-container">
-                        <button className="login-btn" onClick={signInUser}>Logga in</button>
-                    </div>
-                    <Link className="link" to='/signup'>Registrera nytt konto</Link>
+
+
+
+
+
 
                 </section>
             </main>
