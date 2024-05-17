@@ -3,7 +3,7 @@ import { useState } from "react";
 import { auth, db } from "../../config/firebase";
 import './SignUpPage.css'
 import logo from '../../assets/logo.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 
 
@@ -12,6 +12,7 @@ export const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('user');
+    const navigate = useNavigate();
 
     const createUser = async () => {
         try {
@@ -21,6 +22,12 @@ export const SignUpPage = () => {
             await setDoc(doc(db, 'roles', user.uid), { role });
 
             console.log('User registered and role assigned');
+
+            if (role === 'admin') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
 
         } catch (error) {
             console.error('Error registering user', error);
