@@ -1,17 +1,13 @@
 import './Header.css';
 import '../ShoppingCart/ShoppingCart.css'
 import logo from '../../assets/logo.svg';
-import ShoppingCart from '../ShoppingCart/ShoppingCart';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../../features/cartVisibilitySlice';
 
 const Header = () => {
-	const [isCartOpen, setIsCartOpen] = useState(false);
-
-	const toggleCart = () => {
-		console.log('toggle cart', isCartOpen);
-		setIsCartOpen(!isCartOpen);
-	};
+    const dispatch = useDispatch();
+	
 
 
 	return (
@@ -25,8 +21,7 @@ const Header = () => {
 					<Link to="/" className='home-button'>Hem</Link>
 			<Link to="/kategori/fish" className='product-button'>Produkter</Link>
 			<Link to="/login" className='login-button'>Logga in</Link>
-			<button onClick={toggleCart} className='cart-button'>Kundkorg</button>
-			<ShoppingCart/>
+			<button type="button" className='cart-button' onClick={() => dispatch(toggleCart())}>Kundkorg</button>
 			</header>
 			</header>
 	)
