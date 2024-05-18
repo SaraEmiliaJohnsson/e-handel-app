@@ -2,9 +2,11 @@ import ShoppingCartItem from './ShoppingCartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../main';
 import closeIcon from '../../assets/close.svg';
-import { selectTotalPrice } from '../../features/shoppingCartSlice';
+import { clearCart, selectTotalPrice } from '../../features/shoppingCartSlice';
 import './ShoppingCart.css';
 import { toggleCart } from '../../features/cartVisibilitySlice';
+import { Link } from 'react-router-dom';
+import trashcanIcon from '../../assets/trashCan.svg';
 export default function ShoppingCart() {
     const dispatch = useDispatch();
 
@@ -19,14 +21,28 @@ export default function ShoppingCart() {
             </button>
             <h2 className="shopping-cart__title">Kundkorg</h2>
             <ul className="shopping-cart__list" role="list">
-                {shoppingCart && shoppingCart.map((item) => <ShoppingCartItem key={item.id} item={item} />)}
+                {shoppingCart.length > 0 ? (
+                    shoppingCart.map((item) => <ShoppingCartItem key={item.id} item={item} />)
+                ) : (
+                    <li className="shopping-cart__empty-message">Här var det tomt</li>
+                )}
             </ul>
             <p className="shopping-cart__total">
                 Total: <span>{totalPrice}</span> kr
             </p>
-            <button className="shopping-cart__button shopping-cart__button--checkout" type="button">
-                Kassa
+            <button
+                type="button"
+                onClick={() => dispatch(clearCart())}
+                className="shopping-cart__button shopping_cart__button--empty"
+            >
+                <span>
+                    <img src={trashcanIcon} alt="trashcan" />
+                </span>
+                Töm kundvagn
             </button>
+            <Link to={'/kassa'} className="shopping-cart__button shopping-cart__button--checkout" type="button">
+                Kassa
+            </Link>
         </aside>
     );
 }
