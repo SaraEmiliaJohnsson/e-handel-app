@@ -52,11 +52,6 @@ export const SignUpPage = () => {
                         <label>Lösenord:</label>
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                        <select title="role" value={role} onChange={(e) => setRole(e.target.value)}>
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </select>
-
                         <div className="btn-container">
                             <button className="signup-btn" onClick={createUser}>Registrera</button>
 
