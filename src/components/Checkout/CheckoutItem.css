@@ -1,8 +1,27 @@
 .checkout-item {
+    --_transition-time: 0.3s;
+    --_checkout-item-height: 7rem;
+
     display: flex;
     gap: 1rem;
     border-radius: 0.25rem;
     overflow: hidden;
+    opacity: 1;
+    height: var(--_checkout-item-height);
+    transition: opacity var(--_transition-time), transform var(--_transition-time), height var(--_transition-time),
+        display var(--_transition-time) allow-discrete;
+}
+@starting-style {
+    .checkout-item {
+        opacity: 0;
+        height: 0;
+    }
+}
+.is-deleting {
+    height: 0;
+    opacity: 0;
+    display: none;
+    transform: translateX(-100%);
 }
 .checkout-item__image {
     max-width: 10rem;
