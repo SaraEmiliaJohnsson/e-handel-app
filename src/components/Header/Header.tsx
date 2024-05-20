@@ -19,7 +19,7 @@ const Header = () => {
 					</Link>
 					</div>
 					<Link to="/" className='home-button'>Hem</Link>
-			<Link to="/kategori/fish" className='product-button'>Produkter</Link>
+			<Link to="/kategorier" className='product-button'>Produkter</Link>
 			<Link to="/login" className='login-button'>Logga in</Link>
 			<button type="button" className='cart-button' onClick={() => dispatch(toggleCart())}>Kundkorg</button>
 			</header>

@@ -19,7 +19,7 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/produkter" element={<CategoryPage />} />
+                    <Route path="/kategorier" element={<CategoryPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignUpPage />} />
                     <Route path="/kategori/:slug" element={<ItemsListPage />} />
