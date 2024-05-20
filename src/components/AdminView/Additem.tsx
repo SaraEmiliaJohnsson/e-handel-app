@@ -12,6 +12,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
         imgURL: '',
     });
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [isAdding, setIsAdding] = useState(false);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -49,60 +50,76 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
                 imgURL: '',
             });
             setSelectedCategory('');
+            setIsAdding(false);
         } catch (error) {
             console.error('Error adding item: ', error);
         }
     };
+    const handleCancel = () => {
+        setIsAdding(false);
+    };
 
     return (
-        <form onSubmit={handleSubmit} className="add-item-form">
-            <label htmlFor="category">Category:</label>
-            <input
-                list="categories"
-                id="category"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-            />
-            <datalist id="categories">
-                {categories.map((category) => (
-                    <option key={category} value={category} />
-                ))}
-            </datalist>
-            <label htmlFor="name">Name:</label>
-            <input
-                type="text"
-                id="name"
-                value={newItem.name}
-                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                required
-            />
-            <label htmlFor="price">Price:</label>
-            <input
-                type="number"
-                id="price"
-                value={newItem.price}
-                onChange={(e) => setNewItem({ ...newItem, price: parseFloat(e.target.value) })}
-                required
-            />
-            <label htmlFor="description">Description:</label>
-            <input
-                type="text"
-                id="description"
-                value={newItem.description}
-                onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-                required
-            />
-            <label htmlFor="imgURL">Image URL:</label>
-            <input
-                type="text"
-                id="imgURL"
-                value={newItem.imgURL}
-                onChange={(e) => setNewItem({ ...newItem, imgURL: e.target.value })}
-            />
-            <button type="submit" className="add-item-btn">
-                Add Item
-            </button>
-        </form>
+        <>
+            <button onClick={() => setIsAdding(true)}>Lägg till objekt</button>
+            {isAdding && (
+                <div className="add-item-popup">
+                    <div className="add-item-popup-content">
+                        <form onSubmit={handleSubmit} className="add-item-form">
+                            <label htmlFor="category">Kategori:</label>
+                            <input
+                                list="categories"
+                                id="category"
+                                value={selectedCategory}
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                            />
+                            <datalist id="categories">
+                                {categories.map((category) => (
+                                    <option key={category} value={category} />
+                                ))}
+                            </datalist>
+                            <label htmlFor="name">Namn:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                value={newItem.name}
+                                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                                required
+                            />
+                            <label htmlFor="price">Pris:</label>
+                            <input
+                                type="number"
+                                id="price"
+                                value={newItem.price}
+                                onChange={(e) => setNewItem({ ...newItem, price: parseFloat(e.target.value) })}
+                                required
+                            />
+                            <label htmlFor="description">Beskrivning:</label>
+                            <input
+                                type="text"
+                                id="description"
+                                value={newItem.description}
+                                onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
+                                required
+                            />
+                            <label htmlFor="imgURL">Bild URL:</label>
+                            <input
+                                type="text"
+                                id="imgURL"
+                                value={newItem.imgURL}
+                                onChange={(e) => setNewItem({ ...newItem, imgURL: e.target.value })}
+                            />
+                            <button type="submit" className="add-item-btn">
+                                Lägg till objekt
+                            </button>
+                            <button type="button" className="add-item-btn" onClick={handleCancel}>
+                                Avbryt
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
