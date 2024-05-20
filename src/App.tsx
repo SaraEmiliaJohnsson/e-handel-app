@@ -9,12 +9,12 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import AdminViewPage from './pages/AdminviewPage/AdminViewPage';
 import Header from './components/Header/Header';
 import { FooterComponent } from './components/Footer/FooterComponent';
-
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
 function App() {
     return (
         <Router>
-			<Header />
+            <Header />
             <ShoppingCart />
             <main>
                 <Routes>
@@ -24,6 +24,7 @@ function App() {
                     <Route path="/signup" element={<SignUpPage />} />
                     <Route path="/kategori/:slug" element={<ItemsListPage />} />
                     <Route path="/admin" element={<AdminViewPage />} />
+                    <Route path="/kassa" element={<CheckoutPage />} />
                 </Routes>
             </main>
             <FooterComponent />
