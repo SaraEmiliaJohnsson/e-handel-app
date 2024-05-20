@@ -19,7 +19,7 @@ export default function ShoppingCartItem({ item }: CartItemProps) {
             <img className="shopping-cart-item__image" src={item.imgURL} alt={item.name} />
             <div className="shopping-cart-item__details">
                 <p className="shopping-cart-item__name">{item.name}</p>
-                <p className="shopping-cart-item__price">{item.price} kr</p>
+                <p className="shopping-cart-item__price">{item.price * item.quantity} :-</p>
             </div>
             <div className="shopping-cart-item__quantity">
                 <button

@@ -16,10 +16,13 @@ export const cartVisibilitySlice = createSlice({
         toggleCart: (state) => {
             state.isCartOpen = !state.isCartOpen;
         },
+        close: (state) => {
+            state.isCartOpen = false;
+        },
     },
 });
 
-export const { toggleCart } = cartVisibilitySlice.actions;
+export const { toggleCart, close } = cartVisibilitySlice.actions;
 
 export const selectIsCartOpen = (state: RootState) => state.cartVisibility.isCartOpen;
 

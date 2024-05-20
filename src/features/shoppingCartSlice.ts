@@ -24,13 +24,17 @@ const shoppingCartSlice = createSlice({
                 state[index].quantity--;
             }
         },
+        removeItemFromCart: (state: CartItem[], action: PayloadAction<string>) => {
+            const index = state.findIndex((item) => item.id === action.payload);
+            state.splice(index, 1);
+        },
         clearCart: (state) => {
             state.splice(0, state.length);
         },
     },
 });
 
-export const { addToCart, removeFromCart, clearCart } = shoppingCartSlice.actions;
+export const { addToCart, removeFromCart, removeItemFromCart, clearCart } = shoppingCartSlice.actions;
 export const selectTotalPrice = (state: RootState) =>
     Math.ceil(state.shoppingCart.reduce((total, item) => total + item.price * item.quantity, 0));
 export default shoppingCartSlice.reducer;

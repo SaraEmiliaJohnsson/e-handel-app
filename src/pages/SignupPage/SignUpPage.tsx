@@ -1,26 +1,38 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import './SignUpPage.css'
 import logo from '../../assets/logo.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 
 
 
 export const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('user');
+    const navigate = useNavigate();
 
     const createUser = async () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                console.log('Inloggad', userCredential);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-            })
-            .catch((error) => {
-                console.log(error.message);
+            await setDoc(doc(db, 'roles', user.uid), { role });
 
-            });
+            console.log('User registered and role assigned');
+
+            if (role === 'admin') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
+
+        } catch (error) {
+            console.error('Error registering user', error);
+
+        };
     }
 
     return (
@@ -29,7 +41,7 @@ export const SignUpPage = () => {
                 <section className="signup-container">
                     <div className="heading-container">
                         <h1 className="signup-heading">Registrera konto</h1>
-                        <p className="subheading">Registrera ett nytt konte genom att skriva in <br /> e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
+                        <p className="subheading">Registrera ett nytt konte genom att skriva in e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
                     </div>
                     <div className="input-group">
                         <label>E-post:</label>
@@ -39,6 +51,7 @@ export const SignUpPage = () => {
 
                         <label>Lösenord:</label>
                         <input type="password" name="password" id="password" placeholder="Lösenord.." value={password} onChange={(e) => setPassword(e.target.value)} />
+
                         <div className="btn-container">
                             <button className="signup-btn" onClick={createUser}>Registrera</button>
 
