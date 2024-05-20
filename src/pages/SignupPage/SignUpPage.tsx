@@ -41,7 +41,7 @@ export const SignUpPage = () => {
                 <section className="signup-container">
                     <div className="heading-container">
                         <h1 className="signup-heading">Registrera konto</h1>
-                        <p className="subheading">Registrera ett nytt konte genom att skriva in <br /> e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
+                        <p className="subheading">Registrera ett nytt konte genom att skriva in e-postadress och lösenord.</p> <img src={logo} alt="Logo" className="logo-login" />
                     </div>
                     <div className="input-group">
                         <label>E-post:</label>
