@@ -61,7 +61,9 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
 
     return (
         <>
-            <button onClick={() => setIsAdding(true)}>Lägg till objekt</button>
+            <button className="open-add-item-popup" onClick={() => setIsAdding(true)}>
+                Lägg till objekt
+            </button>
             {isAdding && (
                 <div className="add-item-popup">
                     <div className="add-item-popup-content">

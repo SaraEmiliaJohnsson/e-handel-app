@@ -58,7 +58,8 @@ main:has(.adminView-container) {
     background-color: var(--secondary);
 }
 
-.admin-view-btn {
+.admin-view-btn,
+.add-item-btn {
     width: 100%;
     max-height: 2rem;
     background-color: var(--primary);
@@ -79,7 +80,8 @@ main:has(.adminView-container) {
     gap: 2rem;
 }
 
-.edit-overlay {
+.edit-overlay,
+.add-item-popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -114,18 +116,6 @@ main:has(.adminView-container) {
     text-align: center;
 }
 
-.add-item-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .add-item-popup > .add-item-popup-content {
     width: 40rem;
     background-color: var(--background);
@@ -152,9 +142,10 @@ main:has(.adminView-container) {
     text-align: center;
 }
 
-.add-item-btn {
-    width: 100%;
-    max-height: 2rem;
+.open-add-item-popup {
+    display: block;
+    margin-left: auto;
+    margin-right: 2rem;
     background-color: var(--primary);
     padding: 0.4rem;
     border-radius: 0.2rem;

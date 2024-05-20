@@ -8,7 +8,6 @@ import './AdminView.css';
 
 const Adminview = () => {
     const [allItemsData, setAllItemsData] = useState<AdminItem[]>([]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
