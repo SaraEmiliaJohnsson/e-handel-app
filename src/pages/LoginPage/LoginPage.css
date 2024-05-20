@@ -38,7 +38,7 @@
     justify-content: flex-start;
     position: relative;
     text-align: left;
-    width: 40%;
+    width: 50%;
 }
 
 .logo-login {
@@ -49,13 +49,14 @@
 .input-group {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
 }
 
 #email, #password {
     margin: 0.4em;
     padding: 0.4em;
     border-radius: 0.5em;
+    width: 80%;
 }
 
 .btn-container {
@@ -64,6 +65,7 @@
     justify-content: center;
     align-items: flex-end;
     height: 5em;
+    width: 80%;
 }
 
 .subheading {
@@ -85,7 +87,7 @@
 }
 
 .link {
-    padding: 0.7em;
+    padding: 1em;
 }
 
 .link:hover {
