@@ -21,19 +21,20 @@
 .cart-button {
     background: linear-gradient(var(--secondary), var(--background), var(--primary));
     border: 1px solid #000000;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 5px;
     box-shadow: 2px 2px 2px black;
     padding: 10px 15px;
     margin: 0 5px;
-    transition: background-color 0.3s, opacity 0.3s;
     height: 40px;
     line-height: 20px;
     white-space: nowrap;
-    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+    transition: position 0.3s ease;
 }
 .home-button:hover,
 .product-button:hover,
@@ -50,17 +51,24 @@
 .logo {
     margin: 10px;
     filter: brightness(1.5);
+    min-width: 90px;
 }
 .logo:hover {
     filter: brightness(2);
     cursor: pointer;
 }
-@media only screen and (max-width: 560px) {
-    .logo {
+@media only screen and (max-width: 600px) {
+    .home-button {
         display: none;
     }
+    .home-button,
+    .product-button,
+    .login-button,
+    .cart-button {
+        font-size: 0.9rem;
+    }
 }
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 460px) {
     .home-button,
     .product-button,
     .login-button,
@@ -69,5 +77,20 @@
         font-size: 14px;
         margin: 3px;
         max-width: 70px;
+        flex-wrap: wrap;
+        height: 60px;
     }
+}
+
+.plus-icon {
+    color: red;
+    text-shadow: 3px 3px 3px 3px red;
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+.fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
 }

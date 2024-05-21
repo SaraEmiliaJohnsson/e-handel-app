@@ -17,10 +17,10 @@ export default function CategoryPage() {
     }, []);
     return <div className="category-container">
 		<h2 className="category-title">Kategorier</h2>
-            <ul className="categories-list" role="list">
+            <ul className="category-list" role="list">
                 {categories.map((category) => (
-                    <li className="categories__item" key={category.name}>
-                        <Link className="categories__link" to={`/kategori/${category.slug}`}>
+                    <li className="category-item" key={category.name}>
+                        <Link className="category-link" to={`/kategori/${category.slug}`}>
                             {category.name}
                         </Link>
                     </li>
