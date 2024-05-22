@@ -54,3 +54,112 @@
 .checkout-item-quantity-value {
     background-color: #f5faff;
 }
+/* CHECKOUT SUMMARY */
+.checkout__summary {
+    display: grid;
+    gap: 1rem;
+    padding-block: 1rem;
+}
+@media (width < 800px) {
+    .checkout__summary {
+        grid-row: 1/2;
+    }
+}
+.checkout__summary-list {
+    display: grid;
+    gap: 0.5rem;
+}
+.checkout__summary-item {
+    display: flex;
+    justify-content: space-between;
+}
+.checkout__summary-item--total {
+    font-weight: 700;
+}
+.checkout__button {
+    margin-block-start: 2rem;
+    border: none;
+    outline: none;
+    padding-block: 1rem;
+    padding-inline: 1.5rem;
+    background-color: var(--accent);
+    color: var(--background);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.checkout__button:active {
+    transform: scale(0.95);
+}
+.checkout__button:hover {
+    background-color: var(--secondary);
+}
+
+/* CHECKOUT FORM */
+.checkout-form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.checkout-form__label {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+}
+.checkout-form__input > span {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: rgb(110, 110, 110);
+    transition: transform 0.3s;
+    pointer-events: none;
+    padding: 2px;
+}
+.checkout-form__input {
+    width: 100%;
+    background-color: white;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    border-radius: 0.375rem;
+}
+.checkout-form__input:focus {
+    outline: none;
+    box-shadow: var(--primary) 0px 0px 0px 3px;
+}
+.checkout-form__input:user-invalid {
+    outline: green 0px 0px 0px 3px;
+}
+.checkout-form__input:disabled {
+    background-color: #f5faff;
+}
+.checkout-form > div {
+    /* grid-column: span 2; */
+    display: flex;
+    gap: 1rem;
+}
+.checkout-form > div > :first-child {
+    flex-grow: 1;
+}
+.checkout-form > div > :last-child {
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: 5rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
