@@ -19,9 +19,6 @@ export default function CheckoutSummary() {
                     <dd className="checkout__summary-description">{totalPrice} kr</dd>
                 </div>
             </dl>
-            <button className="checkout__button" type="button">
-                Slutför köp
-            </button>
         </div>
     );
 }

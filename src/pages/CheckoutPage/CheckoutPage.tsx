@@ -4,6 +4,7 @@ import { close } from '../../features/cartVisibilitySlice';
 import { RootState } from '../../main';
 import CheckoutItem from '../../components/Checkout/CheckoutItem';
 import CheckoutSummary from '../../components/Checkout/CheckoutSummary';
+import CheckoutDetails from '../../components/Checkout/CheckoutDetails';
 export default function CheckoutPage() {
     const shoppingCart = useSelector((state: RootState) => state.shoppingCart);
     const dispatch = useDispatch();
@@ -21,7 +22,10 @@ export default function CheckoutPage() {
                 )}
             </ul>
             <hr className="checkout__devider" />
-            <CheckoutSummary />
+            <div className="checkout__details-section">
+                <CheckoutDetails />
+                <CheckoutSummary />
+            </div>
         </section>
     );
 }

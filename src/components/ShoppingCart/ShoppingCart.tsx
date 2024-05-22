@@ -28,7 +28,7 @@ export default function ShoppingCart() {
                 )}
             </ul>
             <p className="shopping-cart__total">
-                Total: <span>{totalPrice}</span> kr
+                Total: <span>{totalPrice} :-</span>
             </p>
             <button
                 type="button"

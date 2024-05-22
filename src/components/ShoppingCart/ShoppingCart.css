@@ -110,6 +110,9 @@
     padding-block: 0.5rem;
     transition: opacity 0.25s ease;
 }
+.shopping-cart__total > span {
+    font-weight: 700;
+}
 .shopping-cart-item__quantity-button:hover {
     opacity: 0.5;
 }
