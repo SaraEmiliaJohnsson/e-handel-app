@@ -3,10 +3,10 @@ import "./CategoryPage.css"
 import { Category } from "../../types";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { Link } from "react-router-dom";
+import Categories from "../../components/Categories/Categories";
 
 export default function CategoryPage() {
-	const [categories, setCategories] = useState<Category[]>([]);
+	const [categories , setCategories] = useState<Category[]>([]);
     useEffect(() => {
         const fetchCategories = async () => {
             const querySnapshot = await getDocs(collection(db, 'category'));
@@ -16,16 +16,7 @@ export default function CategoryPage() {
         fetchCategories();
     }, []);
     return <div className="category-container">
-		<h2 className="category-title">Kategorier</h2>
-            <ul className="category-list" role="list">
-                {categories.map((category) => (
-                        <Link className="category-link" key={category.slug} to={`/kategori/${category.slug}`}>
-                            {category.slug}
-						<img src={category.imgURL} alt={category.slug} className="category-image" />
-
-                        </Link>
-                ))}
-            </ul>
+		<Categories/>
 		
 		</div>;
 }

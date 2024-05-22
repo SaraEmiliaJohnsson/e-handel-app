@@ -17,14 +17,15 @@ export default function Categories() {
     }, []);
     return (
         <>
-            <h2 className="categories__title">Kategorier</h2>
-            <ul className="categories__list" role="list">
+            
+            <h2 className="category-title">Kategorier</h2>
+            <ul className="category-list" role="list">
                 {categories.map((category) => (
-                    <li className="categories__item" key={category.slug}>
-                        <Link className="categories__link" to={`kategori/${category.slug}`}>
+                        <Link className="category-link" key={category.slug} to={`/kategori/${category.slug}`}>
                             {category.slug}
+						<img src={category.imgURL} alt={category.slug} className="category-image" />
+
                         </Link>
-                    </li>
                 ))}
             </ul>
         </>
