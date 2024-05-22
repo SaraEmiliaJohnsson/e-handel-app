@@ -77,17 +77,18 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
                         <h2>Nytt objekt</h2>
                         <form onSubmit={handleSubmit} className="add-item-form">
                             <label htmlFor="category">Kategori:</label>
-                            <input
-                                list="categories"
+                            <select
                                 id="category"
                                 value={selectedCategory}
                                 onChange={(e) => setSelectedCategory(e.target.value)}
-                            />
-                            <datalist id="categories">
+                            >
+                                <option value="">Välj en kategori</option>
                                 {categories.map((category) => (
-                                    <option key={category} value={category} />
+                                    <option key={category} value={category}>
+                                        {category}
+                                    </option>
                                 ))}
-                            </datalist>
+                            </select>
                             <label htmlFor="name">Namn:</label>
                             <input
                                 type="text"
