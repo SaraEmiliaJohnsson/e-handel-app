@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../../config/firebase';
 import { collection, getDocs, query } from 'firebase/firestore';
 import TableRow from './TableRow';
+import AddItem from './Additem';
 import { AdminItem, Item } from '../../types';
 import './AdminView.css';
 
@@ -38,9 +39,13 @@ const Adminview = () => {
     const handleItemDeleted = (docId: string) => {
         setAllItemsData((prevItems) => prevItems.filter((item) => item.docId !== docId));
     };
+    const handleItemAdded = (newItem: AdminItem) => {
+        setAllItemsData((prevItems) => [...prevItems, newItem]);
+    };
 
     return (
         <section className="adminView-container">
+            <AddItem onAdd={handleItemAdded} />
             <table className="adminview-table">
                 <thead className="adminview-table-header">
                     <tr className="adminview-table-row">
