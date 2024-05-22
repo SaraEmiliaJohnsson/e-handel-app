@@ -1,9 +1,9 @@
 .footer-container {
-    width: 100%;
-    height: auto;
+    /* width: 100%;
+    height: auto; */
     background-color: black;
     color: var(--background);
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .inside-footer_container {
