@@ -1,0 +1,13 @@
+.category-container {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(var(--secondary), var(--background), var(--secondary));
+    margin: 3%;
+    box-shadow: 5px 5px 5px black;
+    padding: 20px;
+}
