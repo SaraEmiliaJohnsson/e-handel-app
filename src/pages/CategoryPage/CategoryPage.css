@@ -20,7 +20,7 @@
     list-style-type: none;
 }
 
-.category-item {
+.category-link {
     display: flex;
     background: linear-gradient(var(--primary), var(--background), var(--primary));
     border: 1px solid black;
@@ -29,22 +29,19 @@
     box-shadow: 2px 2px 2px black;
     align-items: center;
     justify-content: center;
-}
-
-.category-link {
     font-size: 1.2em;
-    text-decoration: none;
     color: black;
     font-weight: bold;
     display: block;
     padding: 10px;
 }
+
 .category-title {
     padding: 10px;
     margin-bottom: 20px;
     font-size: clamp(1.5rem, 10vw, 2.5rem);
 }
-.category-item:hover {
+.category-link:hover {
     cursor: pointer;
     filter: brightness(1.2);
 }

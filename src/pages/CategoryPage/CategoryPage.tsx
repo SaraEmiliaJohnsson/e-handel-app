@@ -19,11 +19,9 @@ export default function CategoryPage() {
 		<h2 className="category-title">Kategorier</h2>
             <ul className="category-list" role="list">
                 {categories.map((category) => (
-                    <li className="category-item" key={category.name}>
-                        <Link className="category-link" to={`/kategori/${category.slug}`}>
+                        <Link className="category-link" key={category.name} to={`/kategori/${category.slug}`}>
                             {category.name}
                         </Link>
-                    </li>
                 ))}
             </ul>
 		
