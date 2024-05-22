@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../config/firebase';
 import { RootState } from '../../main';
+import { selectTotalItems } from '../../features/shoppingCartSlice';
 
 
 const Header = () => {
@@ -47,7 +48,7 @@ const Header = () => {
             console.error('Error logging out', error);
         }
     };
-
+	const totalItems = useSelector(selectTotalItems);
 	const isCartEmpty = cartItems.length === 0;
 	const isAdminPath = location.pathname.startsWith('/admin');
     return (
@@ -77,7 +78,7 @@ const Header = () => {
 				<button type="button" className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
 					<span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
 						{!isCartEmpty && (
-							<span className="plus-icon">{cartItems.length}</span>
+							<span className="plus-icon">{totalItems}</span>
 						)}
 				</button>
             </header>
