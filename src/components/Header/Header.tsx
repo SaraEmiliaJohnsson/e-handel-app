@@ -1,7 +1,7 @@
 import './Header.css';
 import '../ShoppingCart/ShoppingCart.css';
 import logo from '../../assets/logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '../../features/cartVisibilitySlice';
 import { useEffect, useState } from 'react';
@@ -16,6 +16,7 @@ const Header = () => {
     const navigate = useNavigate();
 	const cartItems = useSelector((state: RootState) => state.shoppingCart);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const location = useLocation();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -48,7 +49,7 @@ const Header = () => {
     };
 
 	const isCartEmpty = cartItems.length === 0;
-
+	const isAdminPath = location.pathname.startsWith('/admin');
     return (
         <header className="header-background">
             <header className="header-container">
@@ -73,7 +74,7 @@ const Header = () => {
                     </Link>
                 )}
 
-				<button type="button" className={`cart-button ${isScrolled ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
+				<button type="button" className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
 					<span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
 						{!isCartEmpty && (
 							<span className="plus-icon">{cartItems.length}</span>
