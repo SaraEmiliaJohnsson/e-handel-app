@@ -24,8 +24,9 @@
     transform: translateX(-100%);
 }
 .checkout-item__image {
-    max-width: 10rem;
+    max-width: 7rem;
     object-fit: cover;
+    aspect-ratio: 16/9;
 }
 .checkout-item__name {
     font-size: 1.2rem;
