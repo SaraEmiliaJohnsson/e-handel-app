@@ -20,9 +20,9 @@ export default function Categories() {
             <h2 className="categories__title">Kategorier</h2>
             <ul className="categories__list" role="list">
                 {categories.map((category) => (
-                    <li className="categories__item" key={category.name}>
+                    <li className="categories__item" key={category.slug}>
                         <Link className="categories__link" to={`kategori/${category.slug}`}>
-                            {category.name}
+                            {category.slug}
                         </Link>
                     </li>
                 ))}

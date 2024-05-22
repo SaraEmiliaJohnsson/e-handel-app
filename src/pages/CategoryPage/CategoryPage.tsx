@@ -19,8 +19,10 @@ export default function CategoryPage() {
 		<h2 className="category-title">Kategorier</h2>
             <ul className="category-list" role="list">
                 {categories.map((category) => (
-                        <Link className="category-link" key={category.name} to={`/kategori/${category.slug}`}>
-                            {category.name}
+                        <Link className="category-link" key={category.slug} to={`/kategori/${category.slug}`}>
+                            {category.slug}
+						<img src={category.imgURL} alt={category.slug} className="category-image" />
+
                         </Link>
                 ))}
             </ul>

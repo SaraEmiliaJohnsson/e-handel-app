@@ -34,6 +34,7 @@
     font-weight: bold;
     display: block;
     padding: 10px;
+    text-transform: capitalize;
 }
 
 .category-title {
@@ -44,4 +45,9 @@
 .category-link:hover {
     cursor: pointer;
     filter: brightness(1.2);
+}
+.category-image {
+    border-radius: 5px;
+    background-size: cover;
+    mix-blend-mode: multiply;
 }
