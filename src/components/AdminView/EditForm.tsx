@@ -41,8 +41,7 @@ const EditForm = ({ item, onSave, onClose }: EditFormProps) => {
                         onChange={(e) => setEditedItem({ ...editedItem, price: parseInt(e.target.value) || 0 })}
                     />
                     <label htmlFor="description">Beskrivning:</label>
-                    <input
-                        type="text"
+                    <textarea
                         name="description"
                         value={editedItem.description}
                         onChange={(e) => setEditedItem({ ...editedItem, description: e.target.value })}
