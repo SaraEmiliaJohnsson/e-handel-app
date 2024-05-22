@@ -1,12 +1,3 @@
-html:has(.adminView-container),
-body:has(.adminView-container),
-#root:has(.adminView-container) {
-    height: 100%;
-}
-#root:has(.adminView-container) {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-}
 
 main:has(.adminView-container) {
     max-width: 100%;
