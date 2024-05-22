@@ -56,6 +56,13 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
         }
     };
     const handleCancel = () => {
+        setNewItem({
+            name: '',
+            description: '',
+            price: 0,
+            imgURL: '',
+        });
+        setSelectedCategory('');
         setIsAdding(false);
     };
 
@@ -67,6 +74,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
             {isAdding && (
                 <div className="add-item-popup">
                     <div className="add-item-popup-content">
+                        <h2>Nytt objekt</h2>
                         <form onSubmit={handleSubmit} className="add-item-form">
                             <label htmlFor="category">Kategori:</label>
                             <input
@@ -97,8 +105,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
                                 required
                             />
                             <label htmlFor="description">Beskrivning:</label>
-                            <input
-                                type="text"
+                            <textarea
                                 id="description"
                                 value={newItem.description}
                                 onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}

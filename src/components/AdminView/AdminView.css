@@ -116,6 +116,10 @@ main:has(.adminView-container) {
     text-align: center;
 }
 
+.edit-popup > form > textarea {
+    resize: none;
+}
+
 .add-item-popup > .add-item-popup-content {
     width: 40rem;
     background-color: var(--background);
@@ -152,4 +156,8 @@ main:has(.adminView-container) {
     cursor: pointer;
     transition: background-color 0.3s;
     border: none;
+}
+
+.add-item-popup-content textarea {
+    resize: none;
 }
