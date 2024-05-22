@@ -9,12 +9,13 @@ export interface Item {
 }
 
 export interface Category {
-    name: string;
     slug: string;
+	imgURL: string;
 }
 
 export interface CartItem extends Item {
     quantity: number;
+}
 
 export interface AdminItem extends Item {
     docId: string;
