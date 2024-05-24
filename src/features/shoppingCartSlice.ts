@@ -34,10 +34,10 @@ const shoppingCartSlice = createSlice({
     },
 });
 
-export const selectTotalItems = (state: RootState) =>
-    state.shoppingCart.reduce((total, item) => total + item.quantity, 0);
-
 export const { addToCart, removeFromCart, removeItemFromCart, clearCart } = shoppingCartSlice.actions;
 export const selectTotalPrice = (state: RootState) =>
     Math.ceil(state.shoppingCart.reduce((total, item) => total + item.price * item.quantity, 0));
+export const selectTotalItems = (state: RootState) =>
+    state.shoppingCart.reduce((total, item) => total + item.quantity, 0);
+
 export default shoppingCartSlice.reducer;
