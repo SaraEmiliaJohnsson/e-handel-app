@@ -10,6 +10,7 @@ import AdminViewPage from './pages/AdminviewPage/AdminViewPage';
 import Header from './components/Header/Header';
 import { FooterComponent } from './components/Footer/FooterComponent';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/kategori/:slug" element={<ItemsListPage />} />
                     <Route path="/admin" element={<AdminViewPage />} />
                     <Route path="/kassa" element={<CheckoutPage />} />
+                    <Route path="/order/:orderId" element={<OrderPage />} />
                 </Routes>
             </main>
             <FooterComponent />

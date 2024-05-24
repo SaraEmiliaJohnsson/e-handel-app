@@ -21,7 +21,7 @@ export default function CheckoutPage() {
                     <li className="checkout__empty-message">Din kundvagn är tom</li>
                 )}
             </ul>
-            <hr className="checkout__devider" />
+            <hr className="checkout__devider devider" />
             <div className="checkout__details-section">
                 <CheckoutDetails />
                 <CheckoutSummary />
