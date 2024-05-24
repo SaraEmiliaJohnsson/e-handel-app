@@ -12,6 +12,8 @@ import { FooterComponent } from './components/Footer/FooterComponent';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import { auth, db } from './config/firebase';
 import ProtectedAdminRoute from './components/ProtectedAdminRoute/ProtectedAdminRoute';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 function App() {
     return (
@@ -30,6 +32,8 @@ function App() {
                             {role === 'admin' ? <Route path="/admin" element={<AdminViewPage />} /> : null}
                             {/* error page? */}
                             <Route path="/kassa" element={<CheckoutPage />} />
+                    				<Route path='*' element={<NotFoundPage/>} />
+                            <Route path="/order/:orderId" element={<OrderPage />} />
                         </Routes>
                     )}
                 </ProtectedAdminRoute>
