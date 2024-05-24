@@ -12,10 +12,12 @@
 .checkout-item__price {
     text-align: right;
 }
-.checkout__devider {
-    margin-block: 1rem;
+.devider {
     border: unset;
     border-bottom: 1px solid #e5e7eb;
+}
+.checkout__devider {
+    margin-block: 1rem;
 }
 .checkout__details-section {
     margin-block-start: 2rem;

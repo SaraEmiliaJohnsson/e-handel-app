@@ -1,0 +1,38 @@
+.order {
+    margin-block: 3rem;
+}
+.order__title {
+    font-size: 4rem;
+    text-align: center;
+}
+.order__devider {
+    margin-block: 1.5rem;
+}
+.order__details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order__subtitle {
+    font-size: 2rem;
+}
+.order__list {
+    display: grid;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+.order__item {
+    display: flex;
+    gap: 1rem;
+}
+.order__item-price {
+    margin-inline-start: auto;
+}
+.order__total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+.order__delivery-address {
+    text-decoration: underline;
+}

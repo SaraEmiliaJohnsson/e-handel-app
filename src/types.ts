@@ -1,3 +1,5 @@
+import { FieldValue } from 'firebase/firestore';
+
 export interface Item {
     id: string;
     name: string;
@@ -10,7 +12,7 @@ export interface Item {
 
 export interface Category {
     slug: string;
-	imgURL: string;
+    imgURL: string;
 }
 
 export interface CartItem extends Item {
@@ -20,5 +22,23 @@ export interface CartItem extends Item {
 export interface AdminItem extends Item {
     docId: string;
     category: string;
+}
 
+export interface OrderItem {
+    id: string;
+    quantity: number;
+    name: string;
+    price: number;
+}
+export interface Order {
+    name: string;
+    email: string;
+    address: string;
+    zipCode: string;
+    status: string;
+    created_at: FieldValue;
+    updated_at: FieldValue;
+    estimated_delivery: number;
+    item: OrderItem[];
+    totalPrice: number;
 }
