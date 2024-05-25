@@ -7,8 +7,17 @@
 
 .search-input {
     width: 100%;
-    padding: 8px;
+    padding: 6px;
     font-size: 16px;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: var(--primary);
+    filter: brightness(1);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .search-results {

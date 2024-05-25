@@ -35,16 +35,29 @@
     border-radius: 5px;
     padding: 5px;
     box-shadow: 2px 2px 2px black;
-    margin: 20px;
+    margin: 10px;
 }
 .product-info {
     font-weight: 500;
     width: 60%;
-    margin: 20px;
+    margin: 10px;
 }
 .product-image {
     border-radius: 5px;
     background-size: cover;
     mix-blend-mode: multiply;
     margin: 5px;
+}
+
+.product-buy-btn {
+    background-color: rgb(204, 253, 204);
+    padding: 1px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.product-buy-btn {
+    background-color: rgb(14, 255, 5);
+    cursor: pointer;
 }
