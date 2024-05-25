@@ -35,25 +35,31 @@ export const SearchComponent: React.FC = () => {
         }
     };
 
-    const handleResultClick = (categorySlug: string, itemId: string) => {
-        navigate(`/kategori/${categorySlug}/produkt/${itemId}`);
+
+    const handleResultClick = (category: string, itemId: string) => {
+        navigate(`/kategori/${category}/produkt/${itemId}`);
+        setQuery('');
     };
 
     return (
         <>
             <section className="search-container">
                 <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyPress} placeholder="Sök..." className="search-input" />
+
                 <button onClick={handleSearch} className="search-button">Sök</button>
-                <ul className="search-results">
-                    {filteredItems.map((item: Item) => (
-                        <li key={item.id} onClick={() => handleResultClick(item.category, item.id)}>
+                {query && (
+                    <ul className="search-results">
+                        {filteredItems.map((item: Item) => (
+                            <li key={item.id} onClick={() => handleResultClick(item.category, item.id)}>
 
-                            <h2>{item.name}</h2>
+                                <h2>{item.name}</h2>
 
 
-                        </li>
-                    ))}
-                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
             </section>
         </>
     );

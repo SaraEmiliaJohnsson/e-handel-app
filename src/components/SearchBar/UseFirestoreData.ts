@@ -17,9 +17,22 @@ export const UseFirestoreData = (categoryPath: string) => {
 
                 for (const categoryDoc of categorySnapshot.docs) {
                     const category = categoryDoc.id;
-                    const itemsCollection = collection(db, `${categoryPath}/${categoryDoc.id}/items`);
-                    const itemsSnapshot = await getDocs(itemsCollection);
-                    const itemsData = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Item));
+
+                    const itemsSnapshot = await getDocs(collection(db, `category/${category}/items`));
+
+                    const itemsData = itemsSnapshot.docs.map(doc => {
+                        const itemData = doc.data();
+                        return {
+                            id: doc.id,
+                            category,
+                            name: itemData.name,
+                            price: itemData.price,
+                            description: itemData.description,
+                            imgURL: itemData.imgURL,
+                            imgId: itemData.imgId,
+                            title: itemData.title,
+                        } as Item;
+                    });
                     allItems.push(...itemsData);
                 }
 

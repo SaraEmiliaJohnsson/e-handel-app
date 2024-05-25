@@ -1,43 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { Item } from "../../types";
 import './ProductDetailPage.css';
 
-const ProductDetailPage: React.FC = () => {
-    const { category, id } = useParams<{ category: string; id: string }>();
-    const [product, setProduct] = useState<Item | null>(null);
+const ProductPage: React.FC = () => {
+    const { slug, itemId } = useParams<{ slug: string; itemId: string }>();
+    const [item, setItem] = useState<Item | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            if (category && id) {
-                const docRef = doc(db, `category/${category}/items`, id);
-                const docSnap = await getDoc(docRef);
-
-                if (docSnap.exists()) {
-                    setProduct({ id: docSnap.id, ...docSnap.data() } as Item);
-                } else {
-                    console.error("No such document!");
+        const fetchItem = async () => {
+            if (slug && itemId) {
+                const itemDoc = await getDoc(doc(db, `category/${slug}/items`, itemId));
+                if (itemDoc.exists()) {
+                    setItem(itemDoc.data() as Item);
                 }
             }
         };
 
-        fetchProduct();
-    }, [category, id]);
+        fetchItem();
+    }, [slug, itemId]);
 
-    if (!product) {
-        return <div>Loading...</div>;
-    }
+    if (!item) return <div>Loading...</div>;
 
     return (
-        <div className="product-detail-container">
-            <h1>{product.name}</h1>
-            <img src={product.imgURL} alt={product.name} className="product-image" />
-            <p>{product.description}</p>
-            <p>{product.price} kr</p>
+        <div className="product-page">
+
+            <div className="inside-product-page">
+                <button onClick={() => navigate(-1)} className="back-button">Tillbaka</button>
+
+                <h1>{item.name}</h1>
+                <img src={item.imgURL} alt={item.name} className="product-image" />
+                <div className="product-info">
+                    <p>{item.description}</p>
+                    <p>{item.price} kr</p>
+                </div>
+            </div>
+
         </div>
     );
 };
 
-export default ProductDetailPage;
+export default ProductPage;

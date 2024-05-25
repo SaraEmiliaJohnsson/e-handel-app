@@ -14,6 +14,7 @@ import { auth, db } from './config/firebase';
 import ProtectedAdminRoute from './components/ProtectedAdminRoute/ProtectedAdminRoute';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import OrderPage from './pages/OrderPage/OrderPage';
+import ProductDetailPage from './components/SearchBar/ProductDetailsPage';
 
 function App() {
     return (
@@ -29,10 +30,11 @@ function App() {
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/signup" element={<SignUpPage />} />
                             <Route path="/kategori/:slug" element={<ItemsListPage />} />
+                            <Route path="/kategori/:slug/produkt/:itemId" element={<ProductDetailPage />} />
                             {role === 'admin' ? <Route path="/admin" element={<AdminViewPage />} /> : null}
                             {/* error page? */}
                             <Route path="/kassa" element={<CheckoutPage />} />
-                    				<Route path='*' element={<NotFoundPage/>} />
+                            <Route path='*' element={<NotFoundPage />} />
                             <Route path="/order/:orderId" element={<OrderPage />} />
                         </Routes>
                     )}

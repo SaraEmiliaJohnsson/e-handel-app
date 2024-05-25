@@ -8,6 +8,7 @@ export interface Item {
     imgURL: string;
     imgId: string;
     title: string;
+    category: string;
 }
 
 export interface Category {
