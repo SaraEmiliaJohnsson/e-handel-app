@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
-import { Item } from "../../types";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../config/firebase';
+import { Item } from '../../types';
 import './ProductDetailPage.css';
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/shoppingCartSlice";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/shoppingCartSlice';
 
 const ProductPage: React.FC = () => {
     const { slug, itemId } = useParams<{ slug: string; itemId: string }>();
@@ -28,19 +28,17 @@ const ProductPage: React.FC = () => {
     }, [slug, itemId]);
 
     const handleAddToCart = (item: Item) => {
-        console.log('Adding to cart:', item);
         dispatch(addToCart(item));
-    }
+    };
 
     if (!item) return <div>Loading...</div>;
 
-
-
     return (
         <div className="product-page">
-
             <div className="inside-product-page">
-                <button onClick={() => navigate('/kategorier')} className="back-button">Tillbaka</button>
+                <button onClick={() => navigate('/kategorier')} className="back-button">
+                    Tillbaka
+                </button>
 
                 <h1>{item.name}</h1>
                 <img src={item.imgURL} alt={item.name} className="product-image" />
@@ -52,7 +50,6 @@ const ProductPage: React.FC = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

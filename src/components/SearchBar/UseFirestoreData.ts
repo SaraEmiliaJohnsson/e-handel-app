@@ -1,7 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { db } from "../../config/firebase";
-import { Item } from "../../types";
+import { collection, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { db } from '../../config/firebase';
+import { Item } from '../../types';
 
 export const UseFirestoreData = (categoryPath: string) => {
     const [data, setData] = useState<Item[]>([]);
@@ -20,7 +20,7 @@ export const UseFirestoreData = (categoryPath: string) => {
 
                     const itemsSnapshot = await getDocs(collection(db, `category/${category}/items`));
 
-                    const itemsData = itemsSnapshot.docs.map(doc => {
+                    const itemsData = itemsSnapshot.docs.map((doc) => {
                         const itemData = doc.data();
                         return {
                             id: doc.id,
@@ -35,8 +35,6 @@ export const UseFirestoreData = (categoryPath: string) => {
                     });
                     allItems.push(...itemsData);
                 }
-
-                console.log('Fetched items:', allItems);
                 setData(allItems);
             } catch (error) {
                 console.error('Error fetching items:', error);

@@ -12,8 +12,6 @@
     padding: 20px;
 }
 
-
-
 .inside-product-page {
     padding: 10px;
     border: 1px solid #000000;
@@ -26,7 +24,6 @@
     align-items: center;
     text-align: center;
 }
-
 
 .back-button {
     background: linear-gradient(var(--primary), var(--background), var(--primary));
