@@ -10,9 +10,9 @@ import { auth } from '../../config/firebase';
 import { RootState } from '../../main';
 import { selectTotalItems } from '../../features/shoppingCartSlice';
 import { SearchComponent } from '../SearchBar/SearchComponent';
+import { HeaderProps } from '../../types';
 
-
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ userRole }) => {
     const dispatch = useDispatch();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
@@ -31,13 +31,11 @@ const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 150);
-
         };
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-
     }, []);
 
     const handleLogout = async () => {
@@ -66,6 +64,11 @@ const Header = () => {
                 <Link to="/kategorier" className="product-button">
                     Produkter
                 </Link>
+                {userRole === 'admin' && (
+                    <Link to="/admin" className="admin-button">
+                        Admin
+                    </Link>
+                )}
                 {isLoggedIn ? (
                     <button className="login-button" onClick={handleLogout}>
                         Logga ut
@@ -75,14 +78,14 @@ const Header = () => {
                         Logga in
                     </Link>
                 )}
-                <div className='search-cart-container'>
-
-
-                    <button type="button" className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
+                <div className="search-cart-container">
+                    <button
+                        type="button"
+                        className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`}
+                        onClick={() => dispatch(toggleCart())}
+                    >
                         <span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
-                        {!isCartEmpty && (
-                            <span className="plus-icon">{totalItems}</span>
-                        )}
+                        {!isCartEmpty && <span className="plus-icon">{totalItems}</span>}
                     </button>
                     <SearchComponent />
                 </div>

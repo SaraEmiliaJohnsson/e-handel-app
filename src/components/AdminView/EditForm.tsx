@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import { AdminItem } from '../../types';
-
-interface EditFormProps {
-    item: AdminItem;
-    onSave: (editedItem: Partial<AdminItem>) => void;
-    onClose: () => void;
-}
+import { EditFormProps, AdminItem } from '../../types';
 
 const EditForm = ({ item, onSave, onClose }: EditFormProps) => {
     const [editedItem, setEditedItem] = useState<Partial<AdminItem>>({

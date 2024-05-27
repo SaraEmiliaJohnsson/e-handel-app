@@ -19,28 +19,29 @@ import ProductDetailPage from './components/SearchBar/ProductDetailsPage';
 function App() {
     return (
         <Router>
-            <Header />
-            <ShoppingCart />
-            <main>
-                <ProtectedAdminRoute auth={auth} db={db}>
-                    {(role) => (
-                        <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/kategorier" element={<CategoryPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/signup" element={<SignUpPage />} />
-                            <Route path="/kategori/:slug" element={<ItemsListPage />} />
-                            <Route path="/kategori/:slug/produkt/:itemId" element={<ProductDetailPage />} />
-                            {role === 'admin' ? <Route path="/admin" element={<AdminViewPage />} /> : null}
-                            {/* error page? */}
-                            <Route path="/kassa" element={<CheckoutPage />} />
-                            <Route path='*' element={<NotFoundPage />} />
-                            <Route path="/order/:orderId" element={<OrderPage />} />
-                        </Routes>
-                    )}
-                </ProtectedAdminRoute>
-            </main>
-            <FooterComponent />
+            <ProtectedAdminRoute auth={auth} db={db}>
+                {(role) => (
+                    <>
+                        <Header userRole={role} />
+                        <ShoppingCart />
+                        <main>
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/kategorier" element={<CategoryPage />} />
+                                <Route path="/login" element={<LoginPage />} />
+                                <Route path="/signup" element={<SignUpPage />} />
+                                <Route path="/kategori/:slug" element={<ItemsListPage />} />
+                                <Route path="/kategori/:slug/produkt/:itemId" element={<ProductDetailPage />} />
+                                {role === 'admin' && <Route path="/admin" element={<AdminViewPage />} />}
+                                <Route path="/kassa" element={<CheckoutPage />} />
+                                <Route path="*" element={<NotFoundPage />} />
+                                <Route path="/order/:orderId" element={<OrderPage />} />
+                            </Routes>
+                        </main>
+                        <FooterComponent />
+                    </>
+                )}
+            </ProtectedAdminRoute>
         </Router>
     );
 }

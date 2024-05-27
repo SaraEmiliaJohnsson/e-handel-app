@@ -1,10 +1,6 @@
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
-import { AdminItem } from '../../types';
-interface DeleteButtonProps {
-    item: AdminItem;
-    onDelete: (docId: string) => void;
-}
+import { DeleteButtonProps } from '../../types';
 
 const DeleteItem = ({ item, onDelete }: DeleteButtonProps) => {
     const deleteItemHandler = async () => {

@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
-interface UserRoleFetcherProps {
-    auth: any;
-    db: any;
-    children: (role: string | null) => React.ReactNode;
-}
+import { UserRoleFetcherProps } from '../../types';
 
 const ProtectedAdminRoute: React.FC<UserRoleFetcherProps> = ({ auth, db, children }) => {
     const [user] = useAuthState(auth);
-    const [role, setRole] = useState(null);
+    const [role, setRole] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchUserRole = async () => {
