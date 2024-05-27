@@ -26,7 +26,7 @@ export interface CartItem extends Item {
 
 export interface AdminItem extends Item {
     docId: string;
-    category: string;
+    itemCategory: string;
 }
 export interface DeleteButtonProps {
     item: AdminItem;

@@ -20,7 +20,7 @@ const Adminview = () => {
                     const itemsSnapshot = await getDocs(itemsQuery);
                     const itemsData: AdminItem[] = itemsSnapshot.docs.map((itemDoc) => ({
                         docId: itemDoc.id,
-                        category: categoryName,
+                        itemCategory: categoryName,
                         ...(itemDoc.data() as Item),
                     }));
                     return itemsData;
