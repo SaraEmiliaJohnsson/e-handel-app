@@ -6,12 +6,11 @@ import './ItemsList.css'
 const ItemsListPage: React.FC = () => {
 	const { slug } = useParams<string>();
 	return (
-	  <div className="centered-container">
-		<h1 className="shop-header">{slug}</h1>
-		<ItemList collectionPath={`category/${slug}/items`} />
-	  </div>
+		<div className="centered-container">
+			<h1 className="shop-header">{slug}</h1>
+			<ItemList collectionPath={`category/${slug}/items`} />
+		</div>
 	);
-  };
-  
-  export default ItemsListPage;
-  
+};
+
+export default ItemsListPage;
