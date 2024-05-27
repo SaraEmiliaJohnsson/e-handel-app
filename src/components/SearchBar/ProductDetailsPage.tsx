@@ -18,7 +18,8 @@ const ProductPage: React.FC = () => {
             if (slug && itemId) {
                 const itemDoc = await getDoc(doc(db, `category/${slug}/items`, itemId));
                 if (itemDoc.exists()) {
-                    setItem(itemDoc.data() as Item);
+                    const itemData = itemDoc.data() as Item;
+                    setItem({ ...itemData, id: itemDoc.id });
                 }
             }
         };
