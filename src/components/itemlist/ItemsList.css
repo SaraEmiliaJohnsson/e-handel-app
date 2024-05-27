@@ -49,6 +49,10 @@
     align-items: center;
     text-align: center;
 }
+.item-list li:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
 
 .medium-image {
     border-radius: 5%;

@@ -30,7 +30,7 @@ export const SearchComponent: React.FC = () => {
     };
 
     const handleResultClick = (category: string, itemId: string) => {
-        navigate(`/kategori/${category}/produkt/${itemId}`);
+        navigate(`/kategorier/${category}/produkt/${itemId}`);
         setQuery('');
     };
 

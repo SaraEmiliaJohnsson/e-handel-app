@@ -29,8 +29,8 @@ function App() {
                             <Route path="/kategorier" element={<CategoryPage />} />
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/signup" element={<SignUpPage />} />
-                            <Route path="/kategori/:slug" element={<ItemsListPage />} />
-                            <Route path="/kategori/:slug/produkt/:itemId" element={<ProductDetailPage />} />
+                            <Route path="/kategorier/:slug" element={<ItemsListPage />} />
+                            <Route path="/kategorier/:slug/produkt/:itemId" element={<ProductDetailPage />} />
                             {role === 'admin' ? <Route path="/admin" element={<AdminViewPage />} /> : null}
                             {/* error page? */}
                             <Route path="/kassa" element={<CheckoutPage />} />
