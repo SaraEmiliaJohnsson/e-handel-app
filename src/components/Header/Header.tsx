@@ -75,15 +75,17 @@ const Header = () => {
                         Logga in
                     </Link>
                 )}
+                <div className='search-cart-container'>
 
-                <SearchComponent />
 
-                <button type="button" className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
-                    <span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
-                    {!isCartEmpty && (
-                        <span className="plus-icon">{totalItems}</span>
-                    )}
-                </button>
+                    <button type="button" className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`} onClick={() => dispatch(toggleCart())}>
+                        <span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
+                        {!isCartEmpty && (
+                            <span className="plus-icon">{totalItems}</span>
+                        )}
+                    </button>
+                    <SearchComponent />
+                </div>
             </header>
         </header>
     );
