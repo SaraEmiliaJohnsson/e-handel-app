@@ -3,6 +3,7 @@ import { UseFirestoreData } from './UseFirestoreData';
 import { Item } from '../../types';
 import './SearchComponent.css';
 import { useNavigate } from 'react-router-dom';
+import searchIcon from '../../assets/search.svg';
 
 export const SearchComponent: React.FC = () => {
     const [query, setQuery] = useState('');
@@ -17,7 +18,7 @@ export const SearchComponent: React.FC = () => {
           )
         : [];
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div className="search-container">Loading...</div>;
 
     const handleSearch = () => {
         setQuery(query);
@@ -46,8 +47,8 @@ export const SearchComponent: React.FC = () => {
                     className="search-input"
                 />
 
-                <button onClick={handleSearch} className="search-button">
-                    Sök
+                <button type="button" title="Sök på en produkt" onClick={handleSearch} className="search-button">
+                    <img src={searchIcon} alt="sök ikon" />
                 </button>
                 {query && (
                     <ul className="search-results">

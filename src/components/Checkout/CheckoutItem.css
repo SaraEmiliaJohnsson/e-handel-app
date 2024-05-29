@@ -51,6 +51,7 @@
     align-self: flex-start;
     border: none;
     outline: none;
+    flex-shrink: 0;
 }
 .checkout-item-quantity-value {
     background-color: #f5faff;
