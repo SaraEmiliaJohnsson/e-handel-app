@@ -113,7 +113,9 @@ const Header = () => {
                             </li>
                             <li className="hambuger__nav--item">
                                 {isLoggedIn ? (
-                                    <button onClick={handleLogout}>Logga ut</button>
+                                    <button className="login-button" onClick={handleLogout}>
+                                        Logga ut
+                                    </button>
                                 ) : (
                                     <Link to="/login">Logga in</Link>
                                 )}
