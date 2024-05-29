@@ -1,5 +1,9 @@
 import { FieldValue } from 'firebase/firestore';
 
+export interface HeaderProps {
+    userRole: string | null;
+}
+
 export interface Item {
     id: string;
     name: string;
@@ -22,7 +26,28 @@ export interface CartItem extends Item {
 
 export interface AdminItem extends Item {
     docId: string;
-    category: string;
+    itemCategory: string;
+}
+export interface DeleteButtonProps {
+    item: AdminItem;
+    onDelete: (docId: string) => void;
+}
+
+export interface EditFormProps {
+    item: AdminItem;
+    onSave: (editedItem: Partial<AdminItem>) => void;
+    onClose: () => void;
+}
+
+export interface UserRoleFetcherProps {
+    auth: any;
+    db: any;
+    children: (role: string | null) => React.ReactNode;
+}
+
+export interface TableRowProps {
+    item: AdminItem;
+    deleteItem: (docId: string) => void;
 }
 
 export interface OrderItem {
@@ -31,6 +56,7 @@ export interface OrderItem {
     name: string;
     price: number;
 }
+
 export interface Order {
     name: string;
     email: string;

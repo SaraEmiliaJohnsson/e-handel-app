@@ -12,8 +12,9 @@ import { auth } from '../../config/firebase';
 import { RootState } from '../../main';
 import { selectTotalItems } from '../../features/shoppingCartSlice';
 import { SearchComponent } from '../SearchBar/SearchComponent';
+import { HeaderProps } from '../../types';
 
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ userRole }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector((state: RootState) => state.shoppingCart);
@@ -77,6 +78,13 @@ const Header = () => {
                             Produkter
                         </Link>
                     </li>
+                    {userRole === 'admin' && (
+                        <li className="header__list--item">
+                            <Link to="/admin" className="admin-button">
+                                Admin
+                            </Link>
+                        </li>
+                    )}   
                     <li className="header__list--item">
                         {isLoggedIn ? (
                             <button className="login-button" onClick={handleLogout}>
@@ -111,6 +119,13 @@ const Header = () => {
                             <li className="hambuger__nav--item">
                                 <Link to="/kategorier">Produkter</Link>
                             </li>
+                            {userRole === 'admin' && (
+                                <li className="hambuger__nav--item">
+                                    <Link to="/admin" className="admin-button">
+                                        Admin
+                                    </Link>
+                                </li>
+                            )} 
                             <li className="hambuger__nav--item">
                                 {isLoggedIn ? (
                                     <button className="login-button" onClick={handleLogout}>

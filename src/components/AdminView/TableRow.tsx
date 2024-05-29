@@ -1,14 +1,9 @@
 import { useState } from 'react';
-import { AdminItem } from '../../types';
+import { AdminItem, TableRowProps } from '../../types';
 import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import EditForm from './EditForm';
 import DeleteItem from './DeleteItem';
-
-interface TableRowProps {
-    item: AdminItem;
-    deleteItem: (docId: string) => void;
-}
 
 const TableRow = ({ item, deleteItem }: TableRowProps) => {
     const [isEditing, setIsEditing] = useState(false);
