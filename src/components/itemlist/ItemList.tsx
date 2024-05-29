@@ -8,9 +8,10 @@ import { addToCart } from '../../features/shoppingCartSlice';
 
 interface ItemListProps {
     collectionPath: string; // Path to the collection in Firestore
+	onItemClicked: (category: string, itemId: string) => void;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ collectionPath }) => {
+const ItemList: React.FC<ItemListProps> = ({ collectionPath, onItemClicked }) => {
     const [itemList, setItemList] = useState<Item[]>([]);
     const dispatch = useDispatch();
 
@@ -30,7 +31,8 @@ const ItemList: React.FC<ItemListProps> = ({ collectionPath }) => {
         return () => {};
     }, [collectionPath]);
 
-    const handleAddToCart = (item: Item) => {
+    const handleAddToCart = (item: Item, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation(); // Prevent event propagation to the parent element
         dispatch(addToCart(item));
     };
 
@@ -38,13 +40,13 @@ const ItemList: React.FC<ItemListProps> = ({ collectionPath }) => {
         <div className="item-list">
             <ul className="items">
                 {itemList.map((item) => (
-                    <li key={item.id} className="item">
+                    <li key={item.id} className="item" onClick={() => onItemClicked(item.category, item.id)}>
                         <div className="item-info">
                             <h3 className="item-name">{item.name}</h3>
                             <p className="item-description">{item.description}</p>
                             <p className="item-price">
                                 Pris: {item.price}kr
-                                <button type="button" className="buy-button" onClick={() => handleAddToCart(item)}>
+                                <button type="button" className="buy-button" onClick={(e) => handleAddToCart(item, e)}>
                                     Köp
                                 </button>
                             </p>

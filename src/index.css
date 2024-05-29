@@ -16,9 +16,12 @@
 :root {
     --font-family: 'Roboto', sans-serif;
 
+    --header-max-width: 160ch;
     --container-max-width: 120ch;
     --container-padding-inline: 2rem;
+
     --container: min(calc(100% - var(--container-padding-inline)), var(--container-max-width));
+    --header-container: min(calc(100% - var(--container-padding-inline)), var(--header-max-width));
 }
 body {
     background-color: var(--background);

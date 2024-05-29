@@ -1,6 +1,8 @@
 import './Header.css';
 import '../ShoppingCart/ShoppingCart.css';
 import logo from '../../assets/logo.svg';
+import shoppingCartIcon from '../../assets/shopping-cart.svg';
+import hambugerIcon from '../../assets/hamburger.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '../../features/cartVisibilitySlice';
@@ -14,11 +16,13 @@ import { HeaderProps } from '../../types';
 
 const Header: React.FC<HeaderProps> = ({ userRole }) => {
     const dispatch = useDispatch();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const cartItems = useSelector((state: RootState) => state.shoppingCart);
-    const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
+
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -38,6 +42,10 @@ const Header: React.FC<HeaderProps> = ({ userRole }) => {
         };
     }, []);
 
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
+
     const handleLogout = async () => {
         try {
             await signOut(auth);
@@ -52,44 +60,97 @@ const Header: React.FC<HeaderProps> = ({ userRole }) => {
     const isAdminPath = location.pathname.startsWith('/admin');
     return (
         <header className="header-background">
-            <header className="header-container">
+            <nav className="header-container">
                 <div className="logo-container">
                     <Link to="/">
                         <img src={logo} alt="Logo" className="logo" />
                     </Link>
                 </div>
-                <Link to="/" className="home-button">
-                    Hem
-                </Link>
-                <Link to="/kategorier" className="product-button">
-                    Produkter
-                </Link>
-                {userRole === 'admin' && (
-                    <Link to="/admin" className="admin-button">
-                        Admin
-                    </Link>
-                )}
-                {isLoggedIn ? (
-                    <button className="login-button" onClick={handleLogout}>
-                        Logga ut
+                <SearchComponent />
+                <ul className="header__list" role="list">
+                    <li className="header__list--item">
+                        <Link to="/" className="home-button">
+                            Hem
+                        </Link>
+                    </li>
+                    <li className="header__list--item">
+                        <Link to="/kategorier" className="product-button">
+                            Produkter
+                        </Link>
+                    </li>
+                    {userRole === 'admin' && (
+                        <li className="header__list--item">
+                            <Link to="/admin" className="admin-button">
+                                Admin
+                            </Link>
+                        </li>
+                    )}   
+                    <li className="header__list--item">
+                        {isLoggedIn ? (
+                            <button className="login-button" onClick={handleLogout}>
+                                Logga ut
+                            </button>
+                        ) : (
+                            <Link to="/login" className="login-button">
+                                Logga in
+                            </Link>
+                        )}
+                    </li>
+                </ul>
+                <div className="hamburger-menu">
+                    <button
+                        type="button"
+                        title="öppna menyn"
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="hamburger--btn"
+                    >
+                        <img src={hambugerIcon} alt="Hamburger menu" />
                     </button>
-                ) : (
-                    <Link to="/login" className="login-button">
-                        Logga in
-                    </Link>
-                )}
+                    <div className={`menu ${isOpen ? 'open' : ''}`}>
+                        <ul role="list">
+                            <li>
+                                <SearchComponent />
+                            </li>
+                            <li className="hambuger__nav--item">
+                                <Link to="/" className="">
+                                    Hem
+                                </Link>
+                            </li>
+                            <li className="hambuger__nav--item">
+                                <Link to="/kategorier">Produkter</Link>
+                            </li>
+                            {userRole === 'admin' && (
+                                <li className="hambuger__nav--item">
+                                    <Link to="/admin" className="admin-button">
+                                        Admin
+                                    </Link>
+                                </li>
+                            )} 
+                            <li className="hambuger__nav--item">
+                                {isLoggedIn ? (
+                                    <button className="login-button" onClick={handleLogout}>
+                                        Logga ut
+                                    </button>
+                                ) : (
+                                    <Link to="/login">Logga in</Link>
+                                )}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div className="search-cart-container">
                     <button
                         type="button"
                         className={`cart-button ${isScrolled && !isAdminPath ? 'fixed' : ''}`}
                         onClick={() => dispatch(toggleCart())}
                     >
-                        <span>{isCartEmpty ? 'Kundkorg' : 'Kundkorg'}</span>
+                        <span>
+                            <img src={shoppingCartIcon} alt="kundkorg ikon" />
+                        </span>
                         {!isCartEmpty && <span className="plus-icon">{totalItems}</span>}
                     </button>
-                    <SearchComponent />
                 </div>
-            </header>
+            </nav>
         </header>
     );
 };
