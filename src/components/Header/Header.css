@@ -1,20 +1,37 @@
 .header-background {
     background: linear-gradient(var(--secondary), var(--background), var(--primary));
     box-shadow: 7px 7px 7px black;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    position: relative;
 }
 
 .header-container {
-    width: 100%;
-    max-width: 1400px;
-    min-height: 100px;
+    width: var(--header-container);
     margin: 0 auto;
-    background: linear-gradient(var(--secondary), var(--background), var(--primary));
-    padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    padding-block: 0.5rem;
 }
+
+.logo-container {
+    flex: 0 1 10rem;
+}
+.header__list {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+@media (width < 1070px) {
+    .header__list {
+        display: none;
+    }
+    .header-container > section {
+        display: none;
+    }
+}
+
 .home-button,
 .product-button,
 .login-button,
@@ -22,19 +39,11 @@
     background: linear-gradient(var(--secondary), var(--background), var(--primary));
     border: 1px solid #000000;
     font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 5px;
+    font-weight: 700;
+    border-radius: 0.25rem;
     box-shadow: 2px 2px 2px black;
-    padding: 10px 15px;
-    margin: 0 5px;
-    height: 40px;
-    line-height: 20px;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    transition: position 0.3s ease;
+    padding: 0.625rem 1rem;
+    transition: position 0.3s ease, filter 0.2s ease;
 }
 .home-button:hover,
 .product-button:hover,
@@ -43,15 +52,8 @@
     cursor: pointer;
     filter: brightness(1.3);
 }
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
 .logo {
-    margin: 10px;
     filter: brightness(1.5);
-    min-width: 90px;
 }
 .logo:hover {
     filter: brightness(2);
@@ -59,49 +61,82 @@
 }
 
 .search-cart-container {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-@media only screen and (max-width: 600px) {
-    .home-button {
-        display: none;
-    }
-    .home-button,
-    .product-button,
-    .login-button,
-    .cart-button {
-        font-size: 0.9rem;
-    }
-    .search-cart-container {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-}
-@media only screen and (max-width: 460px) {
-    .home-button,
-    .product-button,
-    .login-button,
-    .cart-button {
-        padding: 6px 10px;
-        font-size: 14px;
-        margin: 3px;
-        max-width: 70px;
-        flex-wrap: wrap;
-        height: 60px;
-    }
+    position: relative;
+    flex-shrink: 0;
 }
 
 .plus-icon {
     color: red;
-    text-shadow: 3px 3px 3px 3px red;
-    font-size: 1.2rem;
-    margin-left: 5px;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    width: 1.3rem;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 100vh;
+    position: absolute;
+    top: -5px;
+    right: -5px;
 }
 .fixed {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+}
+.hamburger-menu {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+.hamburger--btn {
+    background: linear-gradient(var(--secondary), var(--background), var(--primary));
+    border: 1px solid #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 2px black;
+    padding: 0.625rem 1rem;
+    transition: position 0.3s ease, filter 0.2s ease;
+    min-width: fit-content;
+}
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+    background-color: var(--primary);
+    border-radius: 0 0 0.625rem 0.625rem;
+    z-index: 1000;
+}
+@media (width > 1070px) {
+    .hamburger--btn {
+        display: none;
+    }
+    .menu {
+        display: none;
+    }
+}
+.menu.open {
+    transform: scaleY(1);
+}
+.menu > ul {
+    display: grid;
+    gap: 1rem;
+}
+.hambuger__nav--item {
+    display: grid;
+}
+.hambuger__nav--item > a {
+    background: linear-gradient(var(--secondary), var(--background), var(--primary));
+    border: 1px solid #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+    padding: 0.625rem 1rem;
+    transition: position 0.3s ease, filter 0.2s ease;
 }
