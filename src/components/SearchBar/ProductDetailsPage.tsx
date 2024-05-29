@@ -6,11 +6,11 @@ import { Item } from '../../types';
 import './ProductDetailPage.css';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/shoppingCartSlice';
+import backarrow from "../../assets/backarrow.svg" 
 
 const ProductPage: React.FC = () => {
     const { slug, itemId } = useParams<{ slug: string; itemId: string }>();
     const [item, setItem] = useState<Item | null>(null);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,8 +36,8 @@ const ProductPage: React.FC = () => {
     return (
         <div className="product-page">
             <div className="inside-product-page">
-                <button onClick={() => navigate('/kategorier')} className="back-button">
-                    Tillbaka
+                <button onClick={() => window.history.back()} className="back-button">
+				<img src={backarrow} alt="back arrow" />
                 </button>
 
                 <h1>{item.name}</h1>

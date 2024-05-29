@@ -1,4 +1,5 @@
 .product-page {
+    position: relative;
     display: flex;
     border: 2px solid black;
     border-radius: 5px;
@@ -26,6 +27,7 @@
 }
 
 .back-button {
+    position: absolute;
     background: linear-gradient(var(--primary), var(--background), var(--primary));
     padding: 5px;
     border: 1px solid black;
