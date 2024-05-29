@@ -61,6 +61,13 @@
     max-width: 150px; /* Adjust max-width as needed */
     margin-top: 10px;
 }
+.item-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .buy-button {
     background-color: rgb(204, 253, 204);
     padding: 1px;
