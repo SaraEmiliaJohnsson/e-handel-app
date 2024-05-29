@@ -16,14 +16,14 @@
 .login-container {
     width: 45em;
     height: 25em;
-    border: 2px solid var(--primary);
+    border: 2px solid black;
     border-radius: 0.5em;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     background: linear-gradient(var(--secondary), var(--background), var(--primary));
-    box-shadow: 6px 6px 0 var(--primary);
+    box-shadow: 5px 5px 5px black;
 }
 
 .login-heading {
@@ -71,16 +71,19 @@
 }
 
 .login-btn {
-    background: linear-gradient(var(--secondary), var(--background), var(--secondary));
-    color: black;
-    padding: 0.4em;
-    margin: 0.5em;
-    border-radius: 0.5em;
+    background: linear-gradient(var(--secondary), var(--background), var(--primary));
+    border: 1px solid #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 2px black;
+    padding: 0.625rem 1rem;
+    transition: position 0.3s ease, filter 0.2s ease;
 }
 
 .login-btn:hover {
+    cursor: pointer;
     filter: brightness(1.3);
-    box-shadow: 3px 3px 0 var(--primary);
 }
 
 .link {
