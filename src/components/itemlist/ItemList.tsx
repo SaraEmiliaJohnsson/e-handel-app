@@ -8,7 +8,7 @@ import { addToCart } from '../../features/shoppingCartSlice';
 
 interface ItemListProps {
     collectionPath: string; // Path to the collection in Firestore
-	onItemClicked: (category: string, itemId: string) => void;
+    onItemClicked: (category: string, itemId: string) => void;
 }
 
 const ItemList: React.FC<ItemListProps> = ({ collectionPath, onItemClicked }) => {
@@ -38,20 +38,16 @@ const ItemList: React.FC<ItemListProps> = ({ collectionPath, onItemClicked }) =>
 
     return (
         <div className="item-list">
-            <ul className="items">
+            <ul className="items" role="list">
                 {itemList.map((item) => (
                     <li key={item.id} className="item" onClick={() => onItemClicked(item.category, item.id)}>
-                        <div className="item-info">
-                            <h3 className="item-name">{item.name}</h3>
-                            <p className="item-description">{item.description}</p>
-                            <p className="item-price">
-                                Pris: {item.price}kr
-                                <button type="button" className="buy-button" onClick={(e) => handleAddToCart(item, e)}>
-                                    Köp
-                                </button>
-                            </p>
-                        </div>
-                        <img src={item.imgURL} alt={item.name} className="item-image medium-image" />
+                        <img src={item.imgURL} alt={item.name} className="item-image" />
+                        <h3 className="item-name">{item.name}</h3>
+                        <p className="item-description">{item.description}</p>
+                        <p className="item-price">{item.price}:-</p>
+                        <button type="button" className="buy-button" onClick={(e) => handleAddToCart(item, e)}>
+                            Köp
+                        </button>
                     </li>
                 ))}
             </ul>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import { Item } from '../../types';
 import './ProductDetailPage.css';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/shoppingCartSlice';
-import backarrow from "../../assets/backarrow.svg" 
+import backarrow from '../../assets/backarrow.svg';
 
 const ProductPage: React.FC = () => {
     const { slug, itemId } = useParams<{ slug: string; itemId: string }>();
@@ -37,14 +37,14 @@ const ProductPage: React.FC = () => {
         <div className="product-page">
             <div className="inside-product-page">
                 <button onClick={() => window.history.back()} className="back-button">
-				<img src={backarrow} alt="back arrow" />
+                    <img src={backarrow} alt="back arrow" />
                 </button>
 
-                <h1>{item.name}</h1>
                 <img src={item.imgURL} alt={item.name} className="product-image" />
                 <div className="product-info">
+                    <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <p>Pris: {item.price} kr</p>
+                    <p className="product-info--price">{item.price} :-</p>
                     <button className="product-buy-btn" type="button" onClick={() => handleAddToCart(item)}>
                         Köp
                     </button>
