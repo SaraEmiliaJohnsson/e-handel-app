@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase';
-import { AdminItem, Item } from '../../types';
+import { Item } from '../../types';
 
-const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
+const AddItem = ({ onAdd }: { onAdd: (item: Item) => void }) => {
     const [categories, setCategories] = useState<string[]>([]);
     const [newItem, setNewItem] = useState<Partial<Item>>({
+        category: '',
         name: '',
         description: '',
         price: 0,
@@ -36,12 +37,12 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
         }
         try {
             const categoryRef = collection(db, `category/${selectedCategory}/items`);
-            const newItemRef = await addDoc(categoryRef, newItem);
-            const newItemData: AdminItem = {
-                docId: newItemRef.id,
-                category: selectedCategory,
-                ...newItem,
-            } as AdminItem;
+            const newItemWithCategory = { ...newItem, category: selectedCategory };
+            const newItemRef = await addDoc(categoryRef, newItemWithCategory);
+            const newItemData: Item = {
+                id: newItemRef.id,
+                ...newItemWithCategory,
+            } as Item;
             onAdd(newItemData);
             setNewItem({
                 name: '',
@@ -49,7 +50,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
                 price: 0,
                 imgURL: '',
             });
-            setSelectedCategory('');
+            // setSelectedCategory('');
             setIsAdding(false);
         } catch (error) {
             console.error('Error adding item: ', error);
@@ -62,7 +63,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: AdminItem) => void }) => {
             price: 0,
             imgURL: '',
         });
-        setSelectedCategory('');
+        // setSelectedCategory('');
         setIsAdding(false);
     };
 

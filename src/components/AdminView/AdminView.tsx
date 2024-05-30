@@ -3,11 +3,11 @@ import { db } from '../../config/firebase';
 import { collection, getDocs, query } from 'firebase/firestore';
 import TableRow from './TableRow';
 import AddItem from './Additem';
-import { AdminItem, Item } from '../../types';
+import { Item } from '../../types';
 import './AdminView.css';
 
 const Adminview = () => {
-    const [allItemsData, setAllItemsData] = useState<AdminItem[]>([]);
+    const [allItemsData, setAllItemsData] = useState<Item[]>([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -18,10 +18,10 @@ const Adminview = () => {
                     const itemsQuery = query(collection(categoryDoc.ref, 'items'));
 
                     const itemsSnapshot = await getDocs(itemsQuery);
-                    const itemsData: AdminItem[] = itemsSnapshot.docs.map((itemDoc) => ({
-                        docId: itemDoc.id,
-                        itemCategory: categoryName,
+                    const itemsData: Item[] = itemsSnapshot.docs.map((itemDoc) => ({
                         ...(itemDoc.data() as Item),
+                        id: itemDoc.id,
+                        category: categoryName,
                     }));
                     return itemsData;
                 });
@@ -37,9 +37,9 @@ const Adminview = () => {
     }, []);
 
     const handleItemDeleted = (docId: string) => {
-        setAllItemsData((prevItems) => prevItems.filter((item) => item.docId !== docId));
+        setAllItemsData((prevItems) => prevItems.filter((item) => item.id !== docId));
     };
-    const handleItemAdded = (newItem: AdminItem) => {
+    const handleItemAdded = (newItem: Item) => {
         setAllItemsData((prevItems) => [...prevItems, newItem]);
     };
 
@@ -59,7 +59,7 @@ const Adminview = () => {
                 </thead>
                 <tbody className="adminview-table-body">
                     {allItemsData.map((item) => (
-                        <TableRow key={item.docId} item={item} deleteItem={handleItemDeleted} />
+                        <TableRow key={item.id} item={item} deleteItem={handleItemDeleted} />
                     ))}
                 </tbody>
             </table>
