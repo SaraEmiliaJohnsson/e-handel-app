@@ -50,7 +50,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: Item) => void }) => {
                 price: 0,
                 imgURL: '',
             });
-            // setSelectedCategory('');
+            setSelectedCategory('');
             setIsAdding(false);
         } catch (error) {
             console.error('Error adding item: ', error);
@@ -63,7 +63,7 @@ const AddItem = ({ onAdd }: { onAdd: (item: Item) => void }) => {
             price: 0,
             imgURL: '',
         });
-        // setSelectedCategory('');
+        setSelectedCategory('');
         setIsAdding(false);
     };
 

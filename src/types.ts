@@ -24,10 +24,6 @@ export interface CartItem extends Item {
     quantity: number;
 }
 
-// export interface AdminItem extends Item {
-//     docId: string;
-//     category: string;
-// }
 export interface DeleteButtonProps {
     item: Item;
     onDelete: (docId: string) => void;

@@ -26,7 +26,6 @@ const Adminview = () => {
                     return itemsData;
                 });
                 const allItems = await Promise.all(allItemsPromise);
-                console.log(allItems.flat());
                 setAllItemsData(allItems.flat());
             } catch (error) {
                 console.log('Error getting documents: ', error);
