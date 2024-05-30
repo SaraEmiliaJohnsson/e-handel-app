@@ -24,18 +24,14 @@ export interface CartItem extends Item {
     quantity: number;
 }
 
-export interface AdminItem extends Item {
-    docId: string;
-    itemCategory: string;
-}
 export interface DeleteButtonProps {
-    item: AdminItem;
+    item: Item;
     onDelete: (docId: string) => void;
 }
 
 export interface EditFormProps {
-    item: AdminItem;
-    onSave: (editedItem: Partial<AdminItem>) => void;
+    item: Item;
+    onSave: (editedItem: Partial<Item>) => void;
     onClose: () => void;
 }
 
@@ -46,7 +42,7 @@ export interface UserRoleFetcherProps {
 }
 
 export interface TableRowProps {
-    item: AdminItem;
+    item: Item;
     deleteItem: (docId: string) => void;
 }
 

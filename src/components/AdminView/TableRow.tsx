@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AdminItem, TableRowProps } from '../../types';
+import { Item, TableRowProps } from '../../types';
 import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import EditForm from './EditForm';
@@ -8,7 +8,7 @@ import DeleteItem from './DeleteItem';
 const TableRow = ({ item, deleteItem }: TableRowProps) => {
     const [isEditing, setIsEditing] = useState(false);
 
-    const updateItem = async (docId: string, newData: Partial<AdminItem>) => {
+    const updateItem = async (docId: string, newData: Partial<Item>) => {
         try {
             const itemRef = doc(db, `category/${newData.category}/items`, docId);
             await updateDoc(itemRef, newData);
@@ -26,9 +26,9 @@ const TableRow = ({ item, deleteItem }: TableRowProps) => {
         setIsEditing(false);
     };
 
-    const handleSave = (editedItem: Partial<AdminItem>) => {
+    const handleSave = (editedItem: Partial<Item>) => {
         if (JSON.stringify(item) !== JSON.stringify(editedItem)) {
-            updateItem(item.docId, editedItem);
+            updateItem(item.id, editedItem);
         }
         setIsEditing(false);
     };

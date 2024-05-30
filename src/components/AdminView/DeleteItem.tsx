@@ -5,10 +5,10 @@ import { DeleteButtonProps } from '../../types';
 const DeleteItem = ({ item, onDelete }: DeleteButtonProps) => {
     const deleteItemHandler = async () => {
         try {
-            const itemRef = doc(db, `category/${item.category}/items`, item.docId);
+            const itemRef = doc(db, `category/${item.category}/items`, item.id);
             await deleteDoc(itemRef);
             console.log('Item deleted successfully!');
-            onDelete(item.docId);
+            onDelete(item.id);
         } catch (error) {
             console.error('Error deleting item: ', error);
         }
